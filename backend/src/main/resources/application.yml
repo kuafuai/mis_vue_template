@@ -1,0 +1,66 @@
+server:
+  port: ${PORT:8080}
+
+# MyBatis配置
+mybatis:
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/*.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+app:
+  # 文件路径 示例（ Windows配置D:/kuafu/uploadPath，Linux配置 /home/kuafu/uploadPath）
+  profile: ${UPLOAD_PATH:./uploadPath}
+
+knife4j:
+  enable: true
+
+cache:
+  #缓存可选择redis还是local
+  type: ${CACHE_TYPE:local}
+
+token:
+  expireTime: 43200
+
+#mysql
+spring:
+  profiles:
+    active: ${DB_TYPE:mysql}
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+  redis:
+    host: 114.116.233.39
+    password: lmxderedis
+    database: 3
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 50MB
+      enabled: true
+
+# 在控制台输出sql
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+login:
+  enable: false
+  table: Employee
+  select:
+    table: Employee
+    column: employee_number
+#  openid:
+#    table: Partner
+#    column: wechat_login_id
+
+python:
+  env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            logging: info
