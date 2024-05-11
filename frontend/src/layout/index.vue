@@ -1,7 +1,7 @@
 <template>
 <div v-show="!$route.meta.isParentView" class="flex h-full w-full">
     <div class="menu" id="sidebar">
-        <h3 class="flex-center-center p-y-10 text-color-primary">demo</h3>
+        <h3 class="flex-center-center p-y-10 text-color-primary">{{ left_title }}</h3>
         <el-menu class="el-menu-vertical-demo" @select="handleSelect">
             <div v-for="item in dynamicRoutes" :key="item.path">
                 <el-menu-item :index="item.path">
@@ -24,7 +24,7 @@
     import appMain from './components/app-main.vue';
     import { dynamicRoutes } from '@/router/dynamic'
     const { proxy } = getCurrentInstance();
-
+    let left_title = import.meta.env.VITE_APP_NAME
     let appMainWidth = ref(0);
     let appMainHeight = ref(0);
 
