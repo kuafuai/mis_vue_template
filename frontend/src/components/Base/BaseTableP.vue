@@ -8,6 +8,7 @@
             :data="isPage ? pageRes.records : tableDataList"
             size="small"
             highlight-current-row
+            :border="true"
             >
             <el-table-column v-if="selection" type="selection" :width="55"></el-table-column>
             <template v-if="indexCode">
