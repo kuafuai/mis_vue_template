@@ -60,6 +60,6 @@
 <style lang="scss" scoped>
 .menu {
   box-shadow: 1px 0 5px rgba(0, 0, 0, 0.2);
-  width: 200px;
+  width: 250px;
 }
 </style>

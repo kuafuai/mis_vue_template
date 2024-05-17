@@ -1,4 +1,5 @@
 import axios from 'axios';
+import router from '@/router';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
 // 创建axios实例
@@ -8,13 +9,17 @@ const service = axios.create({
     headers: { 'Content-Type': 'application/json;charset=utf-8' },
 });
 
-
+const useLogin = import.meta.env.VITE_USE_LOGIN
 // 请求拦截器
 service.interceptors.request.use(
     (config) => {
       
       if (!config.headers) {
         throw new Error(`Expected 'config' and 'config.headers' not to be undefined`);
+      }
+      
+      if(useLogin){
+        config.headers.Authorization = 'Bearer ' + localStorage.getItem('token')
       }
   
       return config;
@@ -33,9 +38,11 @@ service.interceptors.response.use(
         return res;
       } else {
         
-        if (code === -1) {
-          handleError();
-        } else {
+        if(code === 401 || code === 403 ){
+          let history = router.currentRoute.value.fullPath;
+          localStorage.removeItem('token')
+          location.href="/login?redirect="+(history?history:'/');
+        }  else {
           ElMessage({
             message: message || '系统出错',
             type: 'error',
@@ -50,7 +57,9 @@ service.interceptors.response.use(
       const { message } = error.response.data;
       // 未认证
       if (error.response.status === 401) {
-        handleError();
+        let history = router.currentRoute.value.fullPath;
+        localStorage.removeItem('token')
+        location.href="/login?redirect="+(history?history:'/');
       } else {
         ElMessage({
           message: '网络异常，请稍后再试!',
@@ -61,11 +70,7 @@ service.interceptors.response.use(
       }
     },
 );
-  
-// 统一处理请求响应异常
-function handleError() {
-    
-}
+
   
 // 导出实例
 export default service;
