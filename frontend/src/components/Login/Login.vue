@@ -27,6 +27,7 @@
           </el-button>
         </el-form-item>
       </el-form>
+      <h5>默认账户密码：admin / 123456</h5>
     </div>
 </template>
 
@@ -92,6 +93,9 @@ const submitForm = async (formEl) => {
   h2 {
     text-align: center;
     margin: 60px 163px 36px 163px;
+  }
+  h5 {
+    text-align: center;
   }
   .el-form {
     margin: 0 auto;
