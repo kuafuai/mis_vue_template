@@ -45,11 +45,11 @@ mybatis-plus:
 
 
 login:
-  enable: false
-  table: Employee
+  enable: ${LOGIN_ENABLE:true}
+  table: UserInfo
   select:
-    table: Employee
-    column: employee_number
+    table: UserInfo
+    column: phone_number
 #  openid:
 #    table: Partner
 #    column: wechat_login_id
