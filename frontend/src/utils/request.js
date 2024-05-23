@@ -39,9 +39,8 @@ service.interceptors.response.use(
       } else {
         
         if(code === 401 || code === 403 ){
-          let history = router.currentRoute.value.fullPath;
-          localStorage.removeItem('token')
-          location.href="/login?redirect="+(history?history:'/');
+          localStorage.removeItem('token');
+          location.href = "/"+import.meta.env.VITE_BASE;
         }  else {
           ElMessage({
             message: message || '系统出错',
