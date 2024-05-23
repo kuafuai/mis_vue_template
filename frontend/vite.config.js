@@ -9,11 +9,9 @@ export default defineConfig(({mode}) => {
   const env = loadEnv(mode, process.cwd());
 
   console.log(env, __dirname);
-  const portIndex = process.argv.indexOf('--port');
-  const port = portIndex > -1 ? parseInt(process.argv[portIndex + 1]) : 3000;
 
   return {
-    base: 'frontend'+port,
+    base: env.VITE_BASE,
     plugins: [
       vue(),
       AutoImport({
