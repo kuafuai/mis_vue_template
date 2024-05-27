@@ -8,12 +8,13 @@ export const constantRouters = [
             title: "登录",
         },
         component: () => import('@/views/login/index.vue'),
-    },
-    {
-        path: "/:pathMatch(.*)*",
-        component: () => import('@/views/error/404.vue'),
-        hidden: true
     }
+    // ,
+    // {
+    //     path: "/:pathMatch(.*)*",
+    //     component: () => import('@/views/error/404.vue'),
+    //     hidden: true
+    // }
 ]
 
 const router = createRouter({
