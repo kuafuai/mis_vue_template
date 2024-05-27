@@ -12,9 +12,7 @@
         </div>
         <div class="flex-1 flex-column w-full m-l-10">
           <!-- 主页面 -->
-          <el-scrollbar>
-            <router-view />
-          </el-scrollbar>
+          <router-view />
         </div>
     </div>
     <div v-if="$route.meta.isParentView" class="h-full">

@@ -17,7 +17,7 @@ $spacing-base-size: 1px; // 基数
 
 // 循环出 margin 与 padding 的各类值
 @each $typeKey, $type in $spacing-types {
-    @for $i from 1 through 30 {
+    @for $i from 1 through 40 {
       // 如果能够被 2 整除，将应用以下样式
       @if ($i % 2 == 0) {
         // m-10{margin:10px} || p-30{padding:30px}

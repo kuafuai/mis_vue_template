@@ -3,6 +3,7 @@ $colors: (
   'white': #fff,
   'black': #000,
   'primary': #00aaff,
+  'primary-q': #92d4f5fe,
   'success': #4cd964,
   'warning': #f0ad4e,
   'error': #999,
@@ -17,6 +18,7 @@ $colors: (
   'hover': #f1f1f1,
   // 遮罩颜色
   'mask': rgba(0, 0, 0, 0.4),
+  'purple': #736EEB,
 );
 @each $key, $value in $colors {
   .text-color-#{$key} {
