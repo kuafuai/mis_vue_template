@@ -5,12 +5,10 @@ import AutoImport from 'unplugin-auto-import/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
-  console.log(mode)
-  const env = loadEnv(mode, process.cwd());
-
-  console.log(env, __dirname);
-
-  return {
+  
+  const env = loadEnv(mode, process.cwd())
+  
+  return { 
     base: env.VITE_BASE,
     plugins: [
       vue(),
@@ -18,7 +16,6 @@ export default defineConfig(({mode}) => {
         imports: [
           'vue',
           'vue-router',
-          'pinia'
         ],
         dts: false
       }),

@@ -1,5 +1,5 @@
 <template>
-    <div :class="wrapper_class">
+    <div :class="wrapper_class" v-bind="$attrs">
         <slot />
     </div>
 </template>

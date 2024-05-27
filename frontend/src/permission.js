@@ -1,8 +1,7 @@
 import router from '@/router';
 
-import { dynamicRoutes } from './dynamic'
+import { dynamicRoutes } from '@/router/dynamic'
 
-// 进度条
 import NProgress from 'nprogress'; // 导入 nprogress模块
 import 'nprogress/nprogress.css'; // 导入样式
 NProgress.configure({ showSpinner: true }); // 显示右上角螺旋加载提示
@@ -37,7 +36,8 @@ router.beforeEach(async (to, from, next) => {
             if (whiteList.indexOf(to.path) !== -1) {
                 next(); // 放行 -- 可以访问白名单页面(eg: 登录页面)
             } else {
-                next(`/login?redirect=${to.path}`); // 无权限 & 白名单页面未配置  =》 跳转到登录页面
+                //next(`/login?redirect=${to.path}`); // 无权限 & 白名单页面未配置  =》 跳转到登录页面
+                next(`/login`);
             }
         }
     }
@@ -52,9 +52,7 @@ router.beforeEach(async (to, from, next) => {
     }
 });
 
-
 // 全局后置钩子
 router.afterEach(() => {
     NProgress.done(); // 完成进度条
 });
-  
