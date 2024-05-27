@@ -1,5 +1,6 @@
 package com.kuafu.common.util;
 
+import com.google.common.base.CaseFormat;
 import com.kuafu.common.constant.Constants;
 import com.kuafu.common.core.text.StrFormatter;
 import org.springframework.util.AntPathMatcher;
@@ -538,5 +539,27 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * 数据库表名/表字段 转 首字母小写驼峰命名 ex:test_data -> testData
+     *
+     * @param dbStr
+     * @return
+     */
+    public static String dbStrToHumpLower(String dbStr) {
+        // 使用谷歌开发工具包转驼峰命名
+        return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, dbStr);
+    }
+
+    /**
+     * 数据库表名/表字段 转 首字母大写驼峰命名 ex:test_data -> TestData
+     *
+     * @param dbStr db
+     * @return d
+     */
+    public static String dbStrToHumpUpper(String dbStr) {
+        // 使用谷歌开发工具包转驼峰命名
+        return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, dbStr);
     }
 }

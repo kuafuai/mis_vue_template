@@ -10,6 +10,7 @@ import com.kuafu.common.login.LoginUser;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.login.model.LoginVo;
 import com.kuafu.login.provider.WxAppAuthentication;
+import com.kuafu.login.provider.WxWebAuthentication;
 import com.kuafu.login.service.LoginBusinessService;
 import com.kuafu.login.service.TokenService;
 import com.kuafu.login.service.WxAppService;
@@ -66,6 +67,16 @@ public class LoginController {
         return ResultUtils.success(token);
     }
 
+    @PostMapping("/login/wxWeb")
+    @ApiOperation("H5微信登录")
+    @ApiOperationSupport(includeParameters = {"loginVo.code", "loginVo.state"})
+    public BaseResponse loginByWeb(@RequestBody LoginVo loginVo) {
+        WxWebAuthentication authentication = new WxWebAuthentication(loginVo);
+        Authentication returnAuth = authenticationManager.authenticate(authentication);
+        LoginUser loginUser = (LoginUser) returnAuth.getPrincipal();
+        String token = tokenService.createToken(loginUser);
+        return ResultUtils.success(token);
+    }
 
     /**
      * 根据code openid获取手机号

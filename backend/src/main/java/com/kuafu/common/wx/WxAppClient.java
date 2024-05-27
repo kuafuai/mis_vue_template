@@ -29,4 +29,17 @@ public class WxAppClient extends AbstractClient {
         return response;
     }
 
+    /**
+     * h5 获取openId
+     *
+     * @param request re
+     * @return rsp
+     */
+    public WxWebCode2TokenResponse code2Session(WxWebCode2TokenRequest request) {
+        String value = this.internalRequest("https://api.weixin.qq.com/sns/oauth2/access_token", "GET", request);
+
+        WxWebCode2TokenResponse response = JSON.parseObject(value, WxWebCode2TokenResponse.class);
+        return response;
+    }
+
 }

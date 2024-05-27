@@ -4,6 +4,8 @@ package com.kuafu.login.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.kuafu.common.domin.ErrorCode;
+import com.kuafu.common.exception.BusinessException;
 import com.kuafu.common.login.SecurityUtils;
 import com.kuafu.common.util.SpringUtils;
 import com.kuafu.common.util.StringUtils;
@@ -12,6 +14,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 @Component
 @Slf4j
@@ -88,6 +95,19 @@ public class LoginBusinessService {
         iService.update(updateWrapper);
     }
 
+    public Long createNewUser(Object openId) {
+        String table = login_table;
+        String fieldName = StringUtils.dbStrToHumpLower(openid_table_column);
+        Object entityObject = createNewUser(table);
+        setFieldValue(entityObject, fieldName, openId);
+        IService iService = SpringUtils.getBean(table);
+        boolean flag = iService.save(entityObject);
+        if (flag) {
+            return getId(entityObject);
+        } else {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR);
+        }
+    }
 
     /**
      * 获取对象 passwd
@@ -129,6 +149,48 @@ public class LoginBusinessService {
         QueryWrapper<?> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(key, value);
         return iService.getOne(queryWrapper);
+    }
+
+    /**
+     * 创建一个新用户
+     *
+     * @param table t
+     * @return o
+     */
+    private Object createNewUser(String table) {
+        Class<?> clazz = SpringUtils.getType(table);
+        String className = clazz.getName();
+        if (StringUtils.containsAnyIgnoreCase(className, "$")) {
+            // 说明是代理
+            clazz = clazz.getSuperclass();
+        }
+
+        Type superClass = clazz.getGenericSuperclass();
+        if (superClass instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) superClass;
+            Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+            Type entityType = actualTypeArguments[1];
+
+            try {
+                Class<?> entityClazz = Class.forName(entityType.getTypeName());
+                return entityClazz.getDeclaredConstructor().newInstance();
+            } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
+                     InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
+    }
+
+    private void setFieldValue(Object obj, String fieldName, Object value) {
+        try {
+            Field field = obj.getClass().getDeclaredField(fieldName);
+            field.setAccessible(true); // 设置可访问
+            field.set(obj, value); // 设置字段值
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

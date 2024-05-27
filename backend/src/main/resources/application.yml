@@ -28,6 +28,7 @@ spring:
     active: ${DB_TYPE:sqlite}
   jackson:
     date-format: "yyyy-MM-dd HH:mm:ss"
+    time-zone: GMT+8
   redis:
     host: 114.116.233.39
     password: lmxderedis
@@ -50,9 +51,9 @@ login:
   select:
     table: UserInfo
     column: phone_number
-#  openid:
-#    table: Partner
-#    column: wechat_login_id
+  openid:
+    table: UserInfo
+    column: wechat_login_id
 
 python:
   env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}

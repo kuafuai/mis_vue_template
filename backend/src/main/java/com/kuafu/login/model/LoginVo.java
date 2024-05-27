@@ -13,4 +13,7 @@ public class LoginVo {
 
     @Schema(description = "密码")
     private String password;
+
+    @Schema(description = "state")
+    private String state;
 }
