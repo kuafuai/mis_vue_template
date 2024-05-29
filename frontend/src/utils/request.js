@@ -9,7 +9,7 @@ const service = axios.create({
     headers: { 'Content-Type': 'application/json;charset=utf-8' },
 });
 
-const useLogin = import.meta.env.VITE_USE_LOGIN
+const useLogin = import.meta.env.VITE_USE_LOGIN === 'true'
 // 请求拦截器
 service.interceptors.request.use(
     (config) => {

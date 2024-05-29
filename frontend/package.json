@@ -13,7 +13,9 @@
     "element-plus": "^2.6.2",
     "nprogress": "^0.2.0",
     "vue": "^3.4.24",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "vue-advanced-chat": "latest"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

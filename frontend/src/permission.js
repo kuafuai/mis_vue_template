@@ -7,7 +7,7 @@ import 'nprogress/nprogress.css'; // 导入样式
 NProgress.configure({ showSpinner: true }); // 显示右上角螺旋加载提示
 
 let hasRouter = false;
-const useLogin = import.meta.env.VITE_USE_LOGIN
+const useLogin = import.meta.env.VITE_USE_LOGIN === 'true'
 const whiteList = ['/login'];
 
 router.beforeEach(async (to, from, next) => {
