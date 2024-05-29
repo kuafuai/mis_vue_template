@@ -46,7 +46,7 @@ mybatis-plus:
 
 
 login:
-  enable: ${LOGIN_ENABLE:true}
+  enable: ${LOGIN_ENABLE:false}
   table: UserInfo
   select:
     table: UserInfo
@@ -57,6 +57,24 @@ login:
 
 python:
   env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}
+
+llm:
+  enable: ${LLM_ENABLE:true}
+  vector:
+    provider: ${VECTOR_PROVIDER:ali}
+    collection_name: ${VECTOR_COLLECT_NAME:test}
+    api_key: ${VECTOR_KEY:sk-YZlXBOCo011rIkIKA0MrVnGq6GVcl453158DC1D6C11EF871B421CA686AEFB}
+    end_point: ${VECTOR_POINT:vrs-cn-ot93reyrh0001p.dashvector.cn-beijing.aliyuncs.com}
+  embedding:
+    provider: ${EMBEDDING_PROVIDER:ali}
+    api_key: ${EMBEDDING_KEY:sk-bdee674292b9420d8328325d794a78c5}
+  chat:
+    provider: ${CHAT_PROVIDER:dify}
+    dify_key: ${CHAT_DIFY_KEY:app-AOoj2JH4sQIijF80rFRal9IV}
+    dify_api: ${CHAT_DIDY_API:http://121.37.137.221:6789/v1}
+    default_prompt: ${CHAT_DEFAULT_PROMPT:你是一名小组手}
+
+
 
 logging:
   level:
