@@ -24,10 +24,21 @@
         import { dynamicRoutes } from '@/router/dynamic'
         const { proxy } = getCurrentInstance();
         let left_title = import.meta.env.VITE_APP_NAME
+
+        const route = useRoute();
+
+        watch(
+            () => route.fullPath,
+            (newPath, oldPath) => {
+                console.log('Route changed from', oldPath, 'to', newPath);
+            }
+        );
         
         function handleSelect(index, indexPath, item, routeResult){
             proxy.$router.push(index);
         }
+
+
     
     </script>
     
