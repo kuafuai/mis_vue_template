@@ -32,6 +32,10 @@ function get_wrapper_class(){
     if(props.h_full){
         c += ' h-full ';
     }
+    else {
+        c += ' p-10 h-full ';
+    }
+
     if( props.w_full){
         c += ' w-full ';
     }
