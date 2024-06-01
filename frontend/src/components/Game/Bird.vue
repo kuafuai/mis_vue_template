@@ -249,6 +249,9 @@
             IsPlay = true;
             GameTime = RunGame(Speed);
         }
+        if(game.value.gameOver) {
+            location.reload();
+        }
         game.value.touch = true;
         e.preventDefault(); 
     }
@@ -262,6 +265,9 @@
         if (!IsPlay) {
             IsPlay = true;
             GameTime = RunGame(Speed);
+        }
+        if(game.value.gameOver) {
+            location.reload();
         }
     }
 
