@@ -10,7 +10,7 @@
 
 <script setup>
 
-import dimetrodonImg from "@/assets/dimetrodon.jpg";
+import dimetrodonImg from "@/assets/puzzle/dimetrodon.jpg";
 
 const { proxy } = getCurrentInstance();
 const canvas = ref();
