@@ -14641,6 +14641,15 @@ cr.behaviors.lunarray_LiteTween = function(e) {
         e.set_float(t)
     }
 })();
+var pathname = window.location.pathname;
+
+if(pathname.length==1){
+    pathname='';
+}
+else{
+    pathname=pathname+"/";
+}
+
 cr.getProjectModel = function() {
     return [null, "StartScreen", [
             [cr.plugins_.Mouse, true, false, false, false, false, false, false, false, false],
@@ -14655,7 +14664,7 @@ cr.getProjectModel = function() {
         [
             ["t0", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0xbf26330e17ef3, [
-                        ["images/aboutbtn-sheet0.png", 1725, 0, 0, 104, 59, 1, .5, .508475, [],
+                        [pathname+"images/aboutbtn-sheet0.png", 1725, 0, 0, 104, 59, 1, .5, .508475, [],
                             [-.471154, -.457627, 0, -.508475, .471154, -.457627, .490385, -.0169496, .471154, .440678, 0, .491525, -.480769, .457627, -.490385, -.0169496], 0
                         ]
                     ]]
@@ -14664,7 +14673,7 @@ cr.getProjectModel = function() {
             ],
             ["t1", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 8146450955332427, [
-                        ["images/playbtn_square-sheet0.png", 2023, 0, 0, 187, 76, 1, .502674, .5, [],
+                        [pathname+"images/playbtn_square-sheet0.png", 2023, 0, 0, 187, 76, 1, .502674, .5, [],
                             [-.481283, -.447368, -.00534782, -.473684, .475936, -.447368, .497326, 0, .475936, .447368, -.00534782, .486842, -.481283, .447368, -.502674, 0], 0
                         ]
                     ]]
@@ -14673,7 +14682,7 @@ cr.getProjectModel = function() {
             ],
             ["t2", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 9530490509326564, [
-                        ["images/pausebtn-sheet0.png", 2077, 0, 0, 52, 52, 1, .519231, .519231, [],
+                        [pathname+"images/pausebtn-sheet0.png", 2077, 0, 0, 52, 52, 1, .519231, .519231, [],
                             [-.365385, -.365385, -.0192308, -.519231, .346154, -.384616, .480769, -.0192308, .346154, .346154, -.0192308, .480769, -.384616, .346154, -.519231, -.0192308], 0
                         ]
                     ]]
@@ -14682,7 +14691,7 @@ cr.getProjectModel = function() {
             ],
             ["t3", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 9680036336350844, [
-                        ["images/gotostartscreenbtn-sheet0.png", 2677, 0, 0, 92, 97, 1, .456522, .43299, [],
+                        [pathname+"images/gotostartscreenbtn-sheet0.png", 2677, 0, 0, 92, 97, 1, .456522, .43299, [],
                             [-.282609, -.268042, .0434783, -.381443, .358695, -.257732, .510869, .0618553, .369565, .402062, .0434783, .515464, -.282609, .402062, -.434783, .0618553], 0
                         ]
                     ]]
@@ -14691,7 +14700,7 @@ cr.getProjectModel = function() {
             ],
             ["t4", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 8381725045710814, [
-                        ["images/playbtn_round-sheet0.png", 2763, 0, 0, 92, 97, 1, .5, .505155, [],
+                        [pathname+"images/playbtn_round-sheet0.png", 2763, 0, 0, 92, 97, 1, .5, .505155, [],
                             [-.326087, -.340207, 0, -.453608, .315217, -.329897, .467391, -.0103096, .326087, .329897, 0, .443299, -.326087, .329897, -.478261, -.0103096], 0
                         ]
                     ]]
@@ -14700,7 +14709,7 @@ cr.getProjectModel = function() {
             ],
             ["t5", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 452975352209808, [
-                        ["images/replaybtn-sheet0.png", 3449, 0, 0, 92, 97, 1, .543478, .505155, [],
+                        [pathname+"images/replaybtn-sheet0.png", 3449, 0, 0, 92, 97, 1, .543478, .505155, [],
                             [-.369565, -.340207, -.0434783, -.453608, .271739, -.329897, .423913, -.0103096, .282609, .329897, -.0434783, .443299, -.369565, .329897, -.521739, -.0103096], 0
                         ]
                     ]]
@@ -14709,7 +14718,7 @@ cr.getProjectModel = function() {
             ],
             ["t6", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 6364276854239438, [
-                        ["images/startscreenbg-sheet0.png", 238084, 0, 0, 320, 480, 1, .5, .5, [],
+                        [pathname+"images/startscreenbg-sheet0.png", 238084, 0, 0, 320, 480, 1, .5, .5, [],
                             [], 1
                         ]
                     ]]
@@ -14718,7 +14727,7 @@ cr.getProjectModel = function() {
             ],
             ["t7", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 8270338397967252, [
-                        ["images/ingamebg-sheet0.png", 181685, 0, 0, 320, 480, 1, .5, .5, [],
+                        [pathname+"images/ingamebg-sheet0.png", 181685, 0, 0, 320, 480, 1, .5, .5, [],
                             [], 1
                         ]
                     ]]
@@ -14727,10 +14736,10 @@ cr.getProjectModel = function() {
             ],
             ["t8", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x936836f36315a, [
-                        ["images/tutorial2-sheet0.png", 200756, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/tutorial2-sheet0.png", 200756, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 1
                         ],
-                        ["images/tutorial2-sheet1.png", 198446, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/tutorial2-sheet1.png", 198446, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 1
                         ]
                     ]]
@@ -14739,10 +14748,10 @@ cr.getProjectModel = function() {
             ],
             ["t9", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x74d899ec3ee24, [
-                        ["images/tutorial-sheet0.png", 224267, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/tutorial-sheet0.png", 224267, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 1
                         ],
-                        ["images/tutorial-sheet1.png", 220546, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/tutorial-sheet1.png", 220546, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 1
                         ]
                     ]]
@@ -14751,10 +14760,10 @@ cr.getProjectModel = function() {
             ],
             ["t10", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x89a209197ed88, [
-                        ["images/pausescreen-sheet0.png", 9759, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/pausescreen-sheet0.png", 9759, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 0
                         ],
-                        ["images/pausescreen-sheet1.png", 9895, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/pausescreen-sheet1.png", 9895, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 0
                         ]
                     ]]
@@ -14763,10 +14772,10 @@ cr.getProjectModel = function() {
             ],
             ["t11", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 328665383089664, [
-                        ["images/aboutscreen-sheet0.png", 12935, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/aboutscreen-sheet0.png", 12935, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 0
                         ],
-                        ["images/aboutscreen-sheet1.png", 12441, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/aboutscreen-sheet1.png", 12441, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 0
                         ]
                     ]]
@@ -14775,10 +14784,10 @@ cr.getProjectModel = function() {
             ],
             ["t12", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x8a533c43b0ecd, [
-                        ["images/gameoverscreen-sheet0.png", 9535, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/gameoverscreen-sheet0.png", 9535, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 0
                         ],
-                        ["images/gameoverscreen-sheet1.png", 9518, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/gameoverscreen-sheet1.png", 9518, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 0
                         ]
                     ]]
@@ -14787,7 +14796,7 @@ cr.getProjectModel = function() {
             ],
             ["t13", cr.plugins_.Sprite, false, [], 2, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0xcb3d5b372aefb, [
-                        ["images/whitescreen-sheet0.png", 244, 0, 0, 320, 480, 1, 0, 0, [],
+                        [pathname+"images/whitescreen-sheet0.png", 244, 0, 0, 320, 480, 1, 0, 0, [],
                             [], 4
                         ]
                     ]]
@@ -14799,7 +14808,7 @@ cr.getProjectModel = function() {
             ],
             ["t14", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 6095122240634483, [
-                        ["images/bomb_big-sheet0.png", 4247, 0, 0, 64, 93, 1, .5, .505376, [],
+                        [pathname+"images/bomb_big-sheet0.png", 4247, 0, 0, 64, 93, 1, .5, .505376, [],
                             [-.3125, -.376344, 0, -.354838, .140625, -.258064, .421875, -.0107524, .265625, .333334, 0, .39785, -.25, .322581, -.375, -.0107524], 0
                         ]
                     ]]
@@ -14808,7 +14817,7 @@ cr.getProjectModel = function() {
             ],
             ["t15", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 6589965858475488, [
-                        ["images/bomb_small-sheet0.png", 2521, 0, 0, 43, 61, 1, .511628, .508197, [],
+                        [pathname+"images/bomb_small-sheet0.png", 2521, 0, 0, 43, 61, 1, .511628, .508197, [],
                             [-.139535, -.245902, -.0232559, -.262295, .27907, -.360656, .372093, -.0163937, .209302, .295082, -.0232559, .360655, -.27907, .327869, -.488372, -.0163937], 0
                         ]
                     ]]
@@ -14817,31 +14826,31 @@ cr.getProjectModel = function() {
             ],
             ["t16", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 9942592025634288, [
-                        ["images/explosion-sheet0.png", 5647, 1, 1, 137, 134, 1, .50365, .507463, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 1, 1, 137, 134, 1, .50365, .507463, [],
                             [-.0583946, -.0522387, -.00729966, -.104478, .124087, -.126866, .0948904, -.00746268, .0583944, .0447763, -.00729966, .0373133, -.0364966, .0149253, -.0291966, -.00746268], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 139, 1, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 139, 1, 137, 134, 1, .50365, .5, [],
                             [-.0802917, -.067164, -.00729966, -.156716, .19708, -.19403, .19708, 0, .102189, .097015, -.00729966, .11194, -.109489, .097015, -.124088, 0], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 277, 1, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 277, 1, 137, 134, 1, .50365, .5, [],
                             [-.175183, -.164179, -.00729966, -.231343, .19708, -.19403, .248175, 0, .124087, .119403, -.00729966, .201493, -.160584, .149254, -.240876, 0], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 1, 136, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 1, 136, 137, 134, 1, .50365, .5, [],
                             [-.350365, -.343284, -.00729966, -.485075, .401459, -.402985, .459854, 0, .313868, .313433, -.00729966, .485075, -.335767, .328358, -.416058, 0], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 139, 136, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 139, 136, 137, 134, 1, .50365, .5, [],
                             [.204379, .223881, -.00729966, -.492537, .357664, -.358209, .489051, 0, .328467, .328358, -.00729966, .395522, .211678, -.231343, -.372263, 0], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 277, 136, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 277, 136, 137, 134, 1, .50365, .5, [],
                             [.270073, .291045, .29927, -.298507, .467153, 0, .240876, -.261194, -.277373, 0], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 1, 271, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 1, 271, 137, 134, 1, .50365, .5, [],
                             [.270073, .291045, .29927, -.298507, .467153, 0, .240876, -.261194, -.277373, 0], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 139, 271, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 139, 271, 137, 134, 1, .50365, .5, [],
                             [], 0
                         ],
-                        ["images/explosion-sheet0.png", 5647, 277, 271, 137, 134, 1, .50365, .5, [],
+                        [pathname+"images/explosion-sheet0.png", 5647, 277, 271, 137, 134, 1, .50365, .5, [],
                             [], 0
                         ]
                     ]]
@@ -14852,7 +14861,7 @@ cr.getProjectModel = function() {
             ],
             ["t17", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 6974015664332222, [
-                        ["images/candyhalf_blue-sheet0.png", 2260, 0, 0, 31, 60, 1, 1, .483333, [],
+                        [pathname+"images/candyhalf_blue-sheet0.png", 2260, 0, 0, 31, 60, 1, 1, .483333, [],
                             [-.612903, -.283333, -.516129, -.3, -.354839, -.3, -.032258, .0166667, -.354839, .333334, -.516129, .333334, -.612903, .316667, -.967742, .0166667], 0
                         ]
                     ]]
@@ -14861,7 +14870,7 @@ cr.getProjectModel = function() {
             ],
             ["t18", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0xd7c5541578bcb, [
-                        ["images/candyhalf_green-sheet0.png", 2815, 0, 0, 39, 76, 1, 1, .5, [],
+                        [pathname+"images/candyhalf_green-sheet0.png", 2815, 0, 0, 39, 76, 1, 1, .5, [],
                             [-.564103, -.276316, -.512821, -.302632, -.25641, -.368421, 0, 0, -.205128, .394737, -.512821, .355263, -.615385, .302632, -1, 0], 0
                         ]
                     ]]
@@ -14870,7 +14879,7 @@ cr.getProjectModel = function() {
             ],
             ["t19", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x6c020a91a5264, [
-                        ["images/candyhalf_purple-sheet0.png", 1983, 0, 0, 25, 48, 1, 1, .520833, [],
+                        [pathname+"images/candyhalf_purple-sheet0.png", 1983, 0, 0, 25, 48, 1, 1, .520833, [],
                             [-.68, -.354166, -.52, -.395833, -.16, -.4375, -.04, -.0208333, -.2, .375, -.64, .291667, -.96, -.0208333], 0
                         ]
                     ]]
@@ -14879,7 +14888,7 @@ cr.getProjectModel = function() {
             ],
             ["t20", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x59fcf6e093ef9, [
-                        ["images/candy_purple-sheet0.png", 2852, 0, 0, 48, 48, 1, .5, .5, [],
+                        [pathname+"images/candy_purple-sheet0.png", 2852, 0, 0, 48, 48, 1, .5, .5, [],
                             [-.333333, -.333333, 0, -.479167, .333333, -.333333, .4375, 0, .270833, .270833, 0, .354167, -.270833, .270833, -.416667, 0], 0
                         ]
                     ]]
@@ -14888,7 +14897,7 @@ cr.getProjectModel = function() {
             ],
             ["t21", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 6323503275742133, [
-                        ["images/candy_blue-sheet0.png", 3452, 0, 0, 60, 60, 1, .5, .5, [],
+                        [pathname+"images/candy_blue-sheet0.png", 3452, 0, 0, 60, 60, 1, .5, .5, [],
                             [-.4, -.4, 0, -.366667, .25, -.25, .416667, 0, .283333, .283333, 0, .4, -.233333, .233333, -.316667, 0], 0
                         ]
                     ]]
@@ -14897,7 +14906,7 @@ cr.getProjectModel = function() {
             ],
             ["t22", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 9770393067484724, [
-                        ["images/candy_green-sheet0.png", 4524, 0, 0, 76, 76, 1, .5, .5, [],
+                        [pathname+"images/candy_green-sheet0.png", 4524, 0, 0, 76, 76, 1, .5, .5, [],
                             [-.368421, -.368421, 0, -.447368, .328947, -.328947, .473684, 0, .289474, .289474, 0, .342105, -.236842, .236842, -.447368, 0], 0
                         ]
                     ]]
@@ -14906,7 +14915,7 @@ cr.getProjectModel = function() {
             ],
             ["t23", cr.plugins_.Sprite, false, [6421634589541215], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 5430814220914779, [
-                        ["images/life-sheet0.png", 2410, 0, 0, 71, 55, 1, .507042, .509091, [],
+                        [pathname+"images/life-sheet0.png", 2410, 0, 0, 71, 55, 1, .507042, .509091, [],
                             [-.338028, -.290909, -.0140842, -.454545, .295775, -.254546, .43662, -.0181819, .197183, .109091, -.0140842, .418182, -.183098, .0727271, -.295774, -.0181819], 0
                         ]
                     ]]
@@ -14917,7 +14926,7 @@ cr.getProjectModel = function() {
             ],
             ["t24", cr.plugins_.Sprite, false, [851692599758286], 4, 0, null, [
                     ["Default", 5, false, 1, 0, false, 9769720370376208, [
-                        ["images/life-sheet0.png", 2410, 0, 0, 71, 55, 1, .507042, .509091, [],
+                        [pathname+"images/life-sheet0.png", 2410, 0, 0, 71, 55, 1, .507042, .509091, [],
                             [-.338028, -.290909, -.0140842, -.454545, .295775, -.254546, .43662, -.0181819, .197183, .109091, -.0140842, .418182, -.183098, .0727271, -.295774, -.0181819], 0
                         ]
                     ]]
@@ -14931,7 +14940,7 @@ cr.getProjectModel = function() {
             ],
             ["t25", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 363864622756435, [
-                        ["images/fontainstar-sheet0.png", 2733, 0, 0, 52, 50, 1, 1.05769, .78, [],
+                        [pathname+"images/fontainstar-sheet0.png", 2733, 0, 0, 52, 50, 1, 1.05769, .78, [],
                             [-.557692, -.62, -.384615, -.44, -.26923, -.28, -.26923, 0, -.557692, -.02, -.788461, -.0599999, -.884615, -.28], 0
                         ]
                     ]]
@@ -14940,10 +14949,10 @@ cr.getProjectModel = function() {
                     ["CustomMovement", cr.behaviors.custom, 0x59a05936e4a88]
                 ], false, false, 8275527515999204, []
             ],
-            ["t26", cr.plugins_.Particles, false, [], 0, 0, ["images/fontainstarparticle.png", 278, 0], null, [], false, false, 7457665451351134, []],
+            ["t26", cr.plugins_.Particles, false, [], 0, 0, [pathname+"images/fontainstarparticle.png", 278, 0], null, [], false, false, 7457665451351134, []],
             ["t27", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x973cd5ed3fbc7, [
-                        ["images/ingamehud_bg-sheet0.png", 7533, 0, 0, 320, 100, 1, .5, .5, [],
+                        [pathname+"images/ingamehud_bg-sheet0.png", 7533, 0, 0, 320, 100, 1, .5, .5, [],
                             [0, -.43, .315625, .09, .3, 0, .3, -.14, 0, .11, -.15, 0], 0
                         ]
                     ]]
@@ -14952,13 +14961,13 @@ cr.getProjectModel = function() {
             ],
             ["t28", cr.plugins_.Sprite, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 807774306128449, [
-                        ["images/lifebar-sheet0.png", 5840, 1, 85, 53, 41, 1, 0, .463415, [],
+                        [pathname+"images/lifebar-sheet0.png", 5840, 1, 85, 53, 41, 1, 0, .463415, [],
                             [.0943396, -.341464, .490566, -.268293, .924528, -.365854, .981132, .0243904, .830189, .317073, .490566, .536585, .169811, .317073, .0377358, .0243904], 0
                         ],
-                        ["images/lifebar-sheet0.png", 5840, 1, 43, 77, 41, 1, 0, .463415, [],
+                        [pathname+"images/lifebar-sheet0.png", 5840, 1, 43, 77, 41, 1, 0, .463415, [],
                             [.0519481, -.365854, .493506, -.439024, .948052, -.365854, .987013, .0243904, .883117, .317073, .493506, .414634, .116883, .317073, .025974, .0243904], 0
                         ],
-                        ["images/lifebar-sheet0.png", 5840, 1, 1, 101, 41, 1, 0, .463415, [],
+                        [pathname+"images/lifebar-sheet0.png", 5840, 1, 1, 101, 41, 1, 0, .463415, [],
                             [.049505, -.341464, .49505, -.292683, .960396, -.365854, .990099, .0243904, .910891, .317073, .49505, .536585, .0891089, .317073, .019802, .0243904], 0
                         ]
                     ]]
@@ -14973,7 +14982,7 @@ cr.getProjectModel = function() {
             ],
             ["t31", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x48f453c54b81f, [
-                        ["images/100scorelabel-sheet0.png", 812, 0, 0, 70, 36, 1, .857143, .0277778, [],
+                        [pathname+"images/100scorelabel-sheet0.png", 812, 0, 0, 70, 36, 1, .857143, .0277778, [],
                             [-.714286, .25, -.357143, .166666, .0285711, .194444, .0857142, .472222, .0142862, .722222, -.357143, .694444, -.728572, .722222, -.842857, .472222], 0
                         ]
                     ]]
@@ -14984,7 +14993,7 @@ cr.getProjectModel = function() {
             ],
             ["t32", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0xcd1e0627b50b5, [
-                        ["images/10scorelabel-sheet0.png", 644, 0, 0, 51, 34, 1, .901961, .941176, [],
+                        [pathname+"images/10scorelabel-sheet0.png", 644, 0, 0, 51, 34, 1, .901961, .941176, [],
                             [-.72549, -.676471, -.411765, -.735294, -.0392158, -.735294, .0588232, -.441176, -.0392158, -.147058, -.764706, -.147058, -.901961, -.441176], 0
                         ]
                     ]]
@@ -14995,7 +15004,7 @@ cr.getProjectModel = function() {
             ],
             ["t33", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 5333891986976473, [
-                        ["images/30scorelabel-sheet0.png", 699, 0, 0, 56, 36, 1, .375, .972222, [],
+                        [pathname+"images/30scorelabel-sheet0.png", 699, 0, 0, 56, 36, 1, .375, .972222, [],
                             [-.196429, -.694444, .125, -.777778, .482143, -.75, .589286, -.472222, .482143, -.194444, -.232143, -.194444, -.357143, -.472222], 0
                         ]
                     ]]
@@ -15006,7 +15015,7 @@ cr.getProjectModel = function() {
             ],
             ["t34", cr.plugins_.Sprite, false, [], 2, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x938b92d78ba9d, [
-                        ["images/3xcombolabel-sheet0.png", 1471, 0, 0, 160, 39, 1, .5, .512821, [],
+                        [pathname+"images/3xcombolabel-sheet0.png", 1471, 0, 0, 160, 39, 1, .5, .512821, [],
                             [-.44375, -.282052, 0, -.179488, .41875, -.179488, .46875, -.0256415, .44375, .25641, -.44375, .25641, -.4625, -.0256415], 0
                         ]
                     ]]
@@ -15018,7 +15027,7 @@ cr.getProjectModel = function() {
             ],
             ["t35", cr.plugins_.Sprite, false, [], 2, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x8c12dd267e646, [
-                        ["images/4xcombolabel-sheet0.png", 1861, 0, 0, 217, 55, 1, .502304, .509091, [],
+                        [pathname+"images/4xcombolabel-sheet0.png", 1861, 0, 0, 217, 55, 1, .502304, .509091, [],
                             [-.447005, -.290909, -.00460812, -.163636, .410138, -.163636, .470046, -.0181819, .43318, .236364, -.43318, .218182, -.497696, -.0181819], 0
                         ]
                     ]]
@@ -15030,7 +15039,7 @@ cr.getProjectModel = function() {
             ],
             ["t36", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 7804252665775305, [
-                        ["images/50scorelabel-sheet0.png", 702, 0, 0, 56, 36, 1, .285714, -.0555556, [],
+                        [pathname+"images/50scorelabel-sheet0.png", 702, 0, 0, 56, 36, 1, .285714, -.0555556, [],
                             [-.125, .305556, .214286, .222223, .589286, .25, .678572, .555556, .553572, .805556, -.125, .805556, -.267857, .555556], 0
                         ]
                     ]]
@@ -15041,7 +15050,7 @@ cr.getProjectModel = function() {
             ],
             ["t37", cr.plugins_.Sprite, false, [], 2, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x6a197eab48f4c, [
-                        ["images/5xcombolabel-sheet0.png", 2375, 0, 0, 267, 64, 1, .501873, .5, [],
+                        [pathname+"images/5xcombolabel-sheet0.png", 2375, 0, 0, 267, 64, 1, .501873, .5, [],
                             [-.445693, -.265625, -.00374565, -.125, .411985, -.140625, .483146, 0, .449438, .296875, -.00374565, .3125, -.453184, .296875, -.483146, 0], 0
                         ]
                     ]]
@@ -15053,7 +15062,7 @@ cr.getProjectModel = function() {
             ],
             ["t38", cr.plugins_.Sprite, false, [], 2, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0xce8d97781143f, [
-                        ["images/candyfontainlable-sheet0.png", 3689, 0, 0, 299, 160, 1, .501672, .5, [],
+                        [pathname+"images/candyfontainlable-sheet0.png", 3689, 0, 0, 299, 160, 1, .501672, .5, [],
                             [-.187291, .0875, -.00334427, -.26875, .220736, .01875, .468228, 0, .384616, .2875, -.00334427, .3125, -.35117, .21875, .38796, 0], 0
                         ]
                     ]]
@@ -15065,10 +15074,10 @@ cr.getProjectModel = function() {
             ],
             ["t39", cr.plugins_.Sprite, false, [], 2, 0, null, [
                     ["Default", 5, false, 1, 0, false, 7627941190844073, [
-                        ["images/supercombolabel-sheet0.png", 7550, 1, 1, 260, 107, 1, .5, .504673, [],
+                        [pathname+"images/supercombolabel-sheet0.png", 7550, 1, 1, 260, 107, 1, .5, .504673, [],
                             [-.261538, .0747661, 0, -.364486, .273077, .0467291, .019231, -.00934589, .423077, .308411, 0, .439252, -.426923, .317757, -.034615, -.00934589], 0
                         ],
-                        ["images/supercombolabel-sheet0.png", 7550, 1, 109, 260, 107, 1, .5, .504673, [],
+                        [pathname+"images/supercombolabel-sheet0.png", 7550, 1, 109, 260, 107, 1, .5, .504673, [],
                             [-.261538, .0747661, 0, -.364486, .273077, .0467291, .019231, -.00934589, .423077, .308411, 0, .439252, -.426923, .317757, -.034615, -.00934589], 0
                         ]
                     ]]
@@ -15086,7 +15095,7 @@ cr.getProjectModel = function() {
             ["t45", cr.plugins_.Text, false, [], 0, 0, null, null, [], false, false, 0xdf0e76169c6a2, []],
             ["t46", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 7241622599948809, [
-                        ["images/juice-sheet0.png", 4479, 0, 0, 451, 452, 1, .501109, .5, [],
+                        [pathname+"images/juice-sheet0.png", 4479, 0, 0, 451, 452, 1, .501109, .5, [],
                             [-.230599, -.230089, -.00221765, -.25, .370288, -.371681, .474501, 0, -.00221765, .329646, -.159646, .159292, -.19734, 0], 0
                         ]
                     ]]
@@ -15097,7 +15106,7 @@ cr.getProjectModel = function() {
             ],
             ["t47", cr.plugins_.Sprite, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 0x94161286dd819, [
-                        ["images/slice-sheet0.png", 816, 0, 0, 64, 64, 1, 0, .5, [],
+                        [pathname+"images/slice-sheet0.png", 816, 0, 0, 64, 64, 1, 0, .5, [],
                             [.140625, -.359375, .5, -.5, .859375, -.359375, 1, 0, .859375, .359375, .5, .5, .140625, .359375, 0, 0], 0
                         ]
                     ]]
@@ -15109,12 +15118,12 @@ cr.getProjectModel = function() {
             ["t48", cr.plugins_.Softgames, false, [], 0, 0, null, null, [], false, false, 8621345822828066, [],
                 [77]
             ],
-            ["t49", cr.plugins_.Spritefont2, false, [], 0, 0, ["images/spritefont.png", 1427, 3], null, [], false, false, 7497840212195717, []],
-            ["t50", cr.plugins_.Spritefont2, false, [], 0, 0, ["images/fruitstxtbmp.png", 3591, 0], null, [], false, false, 0x92bb457feeba8, []],
-            ["t51", cr.plugins_.Spritefont2, false, [], 0, 0, ["images/fruitstxtbmp.png", 3591, 0], null, [], false, false, 8964434448941994, []],
-            ["t52", cr.plugins_.Spritefont2, false, [], 0, 0, ["images/bestscoretxtbmp.png", 2280, 0], null, [], false, false, 761159111345178, []],
-            ["t53", cr.plugins_.Spritefont2, false, [], 0, 0, ["images/bestscoretxtbmp.png", 2280, 0], null, [], false, false, 7550819395002681, []],
-            ["t54", cr.plugins_.Spritefont2, false, [], 0, 0, ["images/bestscoretxtbmp.png", 2280, 0], null, [], false, false, 8421631644712503, []],
+            ["t49", cr.plugins_.Spritefont2, false, [], 0, 0, [pathname+"images/spritefont.png", 1427, 3], null, [], false, false, 7497840212195717, []],
+            ["t50", cr.plugins_.Spritefont2, false, [], 0, 0, [pathname+"images/fruitstxtbmp.png", 3591, 0], null, [], false, false, 0x92bb457feeba8, []],
+            ["t51", cr.plugins_.Spritefont2, false, [], 0, 0, [pathname+"images/fruitstxtbmp.png", 3591, 0], null, [], false, false, 8964434448941994, []],
+            ["t52", cr.plugins_.Spritefont2, false, [], 0, 0, [pathname+"images/bestscoretxtbmp.png", 2280, 0], null, [], false, false, 761159111345178, []],
+            ["t53", cr.plugins_.Spritefont2, false, [], 0, 0, [pathname+"images/bestscoretxtbmp.png", 2280, 0], null, [], false, false, 7550819395002681, []],
+            ["t54", cr.plugins_.Spritefont2, false, [], 0, 0, [pathname+"images/bestscoretxtbmp.png", 2280, 0], null, [], false, false, 8421631644712503, []],
             ["t55", cr.plugins_.Browser, false, [], 0, 0, null, null, [], false, false, 0xdd18963d981d7, [],
                 []
             ],
