@@ -40,26 +40,24 @@ onMounted(()=>{
     canvas.value = proxy.$refs.myCanvas;
     ctx.value = canvas.value.getContext('2d');
 
-    
-    
-
-    
-
     img.value = new Image();
+    img.value
     img.value.src = dimetrodonImg;
 
     img.value.onload = function(){
-
         
-        canvas.value.width = img.value.width;
-        canvas.value.height = img.value.height;
+        let width = img.value.width;
+        let height = img.value.height;
+        let v = width>height?height:width;
 
+        canvas.value.width = v;
+        canvas.value.height = v;
+        
         boardSize.value = canvas.value ? canvas.value.width : 0;
-
         tileSize.value = boardSize.value / tileCount.value;
-
+        
         setBoard();
-
+        
         drawTiles();
 
     };
@@ -84,11 +82,8 @@ function setBoard() {
         boardParts.value.push(row);
     }
     
-    console.log(boardParts.value)
-
     emptyLoc.value.x = boardParts.value[tileCount.value - 1][tileCount.value - 1].x;
     emptyLoc.value.y = boardParts.value[tileCount.value - 1][tileCount.value - 1].y;
-    console.log(emptyLoc.value)
     
     solved.value = false;
 }
@@ -103,7 +98,7 @@ function drawTiles() {
     // ctx.value.fillRect(250, 50, 150, 100); // 绘制一个绿色长方形
 
     ctx.value.clearRect( 0 , 0 , boardSize.value , boardSize.value );
-   
+    //ctx.value.drawImage(img.value, 0, 0, boardSize.value, boardSize.value);
     
     for (var i = 0; i < tileCount.value; ++i) {
 
@@ -112,13 +107,13 @@ function drawTiles() {
             var x = boardParts.value[i][j].x;
             var y = boardParts.value[i][j].y;
 
-
             if(i != emptyLoc.value.x || j != emptyLoc.value.y || solved.value == true) {
 
-                ctx.value.drawImage(img.value, x * tileSize.value, y * tileSize.value, tileSize.value, tileSize.value,
-                    i * tileSize.value, j * tileSize.value, tileSize.value, tileSize.value);
+                 ctx.value.drawImage(img.value, x * tileSize.value, y * tileSize.value, tileSize.value, tileSize.value,
+                     i * tileSize.value, j * tileSize.value, tileSize.value, tileSize.value);
+                
             }
-
+        
         }
 
     }
@@ -143,8 +138,6 @@ function slideTile(toLoc, fromLoc) {
         
         toLoc.value.x = fromLoc.value.x;
         toLoc.value.y = fromLoc.value.y;
-
-        console.log(emptyLoc.value);
 
         checkSolved();
     }
