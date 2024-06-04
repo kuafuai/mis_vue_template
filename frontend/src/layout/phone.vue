@@ -14,7 +14,6 @@
         <router-view   />
       </div>
       <div class="foot w-full bg-color-white flex-c-center-center">
-        <span>惠人达己 守正出奇</span>
         <span>Powered by CodeFlying</span>
       </div>  
     </div>
