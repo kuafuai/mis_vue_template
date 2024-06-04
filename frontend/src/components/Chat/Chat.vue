@@ -54,7 +54,7 @@ function sendMessage(message, hide_msg) {
       {
         _id: messages.value.length,
         content: message.content,
-        senderId: this.currentUserId,
+        senderId: currentUserId.value,
         timestamp: new Date().toString().substring(16, 21),
         date: new Date().toDateString()
       }
@@ -98,9 +98,9 @@ function sendMessage(message, hide_msg) {
 
           let message = messages.value[messages.value.length - 1]
 
-          if (message.senderId == this.currentUserId) {
+          if (message.senderId == currentUserId.value) {
             
-            this.addNewMessage(newMessage.answer)
+            addNewMessage(newMessage.answer)
 
           } else {
             messages.value[messages.value.length - 1].content += newMessage.answer
