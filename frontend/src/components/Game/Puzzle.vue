@@ -173,14 +173,26 @@ function handleMove(e){
 }
 
 
-function touchClick(e){
-    console.log(11122);
+function touchClick(el){
     
-    e.preventDefault();
+    var e = el.changedTouches[0];
+
+    clickLoc.value.x = Math.floor((e.pageX) / tileSize.value);
+    clickLoc.value.y = Math.floor((e.pageY) / tileSize.value);
+    
+    if (distance(clickLoc.value.x, clickLoc.value.y, emptyLoc.value.x, emptyLoc.value.y) == 1) {
+        slideTile(emptyLoc, clickLoc);
+        drawTiles();
+    }
+    if (solved.value) {
+        setTimeout(function() {alert("You solved it!");}, 500);
+    }
+
+    el.preventDefault();
 }
 
-function touchMove(){
-    console.log("22222");
+function touchMove(e){
+    console.log("22222",e);
 }
 
 </script>
