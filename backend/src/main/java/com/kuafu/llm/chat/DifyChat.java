@@ -2,6 +2,7 @@ package com.kuafu.llm.chat;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.kuafu.llm.model.ChatResponse;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okhttp3.sse.EventSource;
@@ -124,7 +125,7 @@ public class DifyChat implements Chat {
     }
 
     @Override
-    public String callApiBlock(String query, String conversationId, String userId) {
+    public ChatResponse callApiBlock(String query, String conversationId, String userId) {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -169,7 +170,11 @@ public class DifyChat implements Chat {
             String event = jsonObject.get("event").getAsString();
             if (event.equals("message")) {
                 String conversation_id = jsonObject.get("conversation_id").getAsString();
-                return conversation_id;
+                 String answer = jsonObject.get("answer").getAsString();
+                 ChatResponse chatResponse = new ChatResponse();
+                 chatResponse.setAnswer(answer);
+                 chatResponse.setConversionId(conversation_id);
+                return chatResponse;
             } else {
                 System.out.println(jsonObject);
             }

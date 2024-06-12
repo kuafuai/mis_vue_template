@@ -2,7 +2,9 @@ package com.kuafu.llm.controller;
 
 import com.kuafu.llm.chat.Chat;
 import com.kuafu.llm.config.LLMStartBusiness;
+import com.kuafu.llm.model.ChatResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -43,6 +45,15 @@ public class ChatController {
 
         log.info("embedding search: {}", search);
 
+
+
+        String conversionId= chatRequest.getConversionId();
+        if (StringUtils.isEmpty(conversionId)){
+             ChatResponse chatResponse = chat.callApiBlock(defaultPrompt + "\n当你接收到这段话时,你只需要回复【收到】即可，不要回复多余的内容",
+                    null, chatRequest.getUserId());
+            conversionId = chatResponse.getConversionId();
+        }
+
         StringBuilder context = new StringBuilder("context is \n");
         for (String s : search) {
             context.append(s).append("\n");
@@ -51,7 +62,7 @@ public class ChatController {
         log.info("content : {}", context);
 
         chat.callApiStream(chatRequest.getQuery() + "\n" + context,
-                chatRequest.getConversionId(), chatRequest.getUserId(), emitter);
+                conversionId, chatRequest.getUserId(), emitter);
 
         // 在后台线程中模拟实时数据
         return emitter;
