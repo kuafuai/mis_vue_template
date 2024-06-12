@@ -46,7 +46,7 @@ mybatis-plus:
 
 
 login:
-  enable: ${LOGIN_ENABLE:true}
+  enable: ${LOGIN_ENABLE:false}
   table: UserInfo
   select:
     table: UserInfo
@@ -59,7 +59,7 @@ python:
   env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}
 
 llm:
-  enable: ${LLM_ENABLE:false}
+  enable: ${LLM_ENABLE:true}
   vector:
     provider: ${VECTOR_PROVIDER:ali}
     collection_name: ${VECTOR_COLLECT_NAME:test}
@@ -72,7 +72,7 @@ llm:
     provider: ${CHAT_PROVIDER:dify}
     dify_key: ${CHAT_DIFY_KEY:app-AOoj2JH4sQIijF80rFRal9IV}
     dify_api: ${CHAT_DIDY_API:http://121.37.137.221:6789/v1}
-    default_prompt: ${CHAT_DEFAULT_PROMPT:你是一名小组手}
+    default_prompt: ${CHAT_DEFAULT_PROMPT:你是一名小助手}
 
 
 

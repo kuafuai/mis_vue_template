@@ -2,6 +2,7 @@ package com.kuafu.llm.controller;
 
 import com.kuafu.llm.chat.Chat;
 import com.kuafu.llm.config.LLMStartBusiness;
+import com.kuafu.llm.config.PromptConfig;
 import com.kuafu.llm.model.ChatResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -49,7 +50,7 @@ public class ChatController {
 
         String conversionId= chatRequest.getConversionId();
         if (StringUtils.isEmpty(conversionId)){
-             ChatResponse chatResponse = chat.callApiBlock(defaultPrompt + "\n当你接收到这段话时,你只需要回复【收到】即可，不要回复多余的内容",
+             ChatResponse chatResponse = chat.callApiBlock(PromptConfig.PROMPT + "\n当你接收到这段话时,你只需要回复【收到】即可，不要回复多余的内容",
                     null, chatRequest.getUserId());
             conversionId = chatResponse.getConversionId();
         }

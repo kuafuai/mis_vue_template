@@ -2,13 +2,17 @@ package com.kuafu.llm.config;
 
 import com.kuafu.llm.loader.FixedSizeTextSplit;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.apache.xmlbeans.impl.schema.ClassLoaderResourceLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -46,6 +50,15 @@ public class FileScanLoader implements ApplicationListener<ContextRefreshedEvent
                 }
             }
         }
+
+        log.info("start load prompt");
+        try {
+        ClassPathResource classPathResource = new ClassPathResource("prompt.txt");
+        PromptConfig.PROMPT = IOUtils.toString(classPathResource.getInputStream(),"UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        log.info("end load prompt,prompt is {}",PromptConfig.PROMPT);
 
         log.info("end llm");
     }

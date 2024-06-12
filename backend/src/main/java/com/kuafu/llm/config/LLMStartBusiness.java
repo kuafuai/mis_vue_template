@@ -43,7 +43,6 @@ public class LLMStartBusiness {
 
     public List<String> search(String text) {
         List<Double> vectors = embedding.embedding(text);
-
         return vector.search(defaultCollectionName, vectors);
     }
 }
