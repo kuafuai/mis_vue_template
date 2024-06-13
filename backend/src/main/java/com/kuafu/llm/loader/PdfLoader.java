@@ -10,12 +10,12 @@ import java.io.*;
 /**
  * pdf文档的加载器
  */
-public class PdfLoader implements Loader{
+public class PdfLoader implements Loader {
     @Override
     public String loader(String file) {
         try {
             FileInputStream inputStream = new FileInputStream(FileUtil.file(file));
-            return loader(inputStream );
+            return loader(inputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -26,7 +26,7 @@ public class PdfLoader implements Loader{
     public String loader(File file) {
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
-            return loader(fileInputStream );
+            return loader(fileInputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

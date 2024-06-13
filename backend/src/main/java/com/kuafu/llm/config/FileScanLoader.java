@@ -54,13 +54,13 @@ public class FileScanLoader implements ApplicationListener<ContextRefreshedEvent
         log.info("start load prompt");
         try {
             ClassPathResource classPathResource = new ClassPathResource("prompt.txt");
-            if (classPathResource.exists()){
-                PromptConfig.PROMPT = IOUtils.toString(classPathResource.getInputStream(),"UTF-8");
-                }
+            if (classPathResource.exists()) {
+                PromptConfig.PROMPT = IOUtils.toString(classPathResource.getInputStream(), "UTF-8");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        log.info("end load prompt,prompt is {}",PromptConfig.PROMPT);
+        log.info("end load prompt,prompt is {}", PromptConfig.PROMPT);
 
         log.info("end llm");
     }

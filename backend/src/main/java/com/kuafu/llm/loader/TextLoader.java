@@ -21,7 +21,7 @@ public class TextLoader implements Loader {
     @Override
     public String loader(InputStream inputStream) {
         try {
-            return IOUtils.toString(inputStream,"UTF-8");
+            return IOUtils.toString(inputStream, "UTF-8");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

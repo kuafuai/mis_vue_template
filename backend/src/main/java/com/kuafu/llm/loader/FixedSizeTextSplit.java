@@ -21,9 +21,9 @@ public class FixedSizeTextSplit {
             loader = new DocLoader();
         } else if (StringUtils.equalsIgnoreCase(fileType, "docx")) {
             loader = new DocxLoader();
-        } else if(StringUtils.equalsIgnoreCase(fileType,"pdf")){
+        } else if (StringUtils.equalsIgnoreCase(fileType, "pdf")) {
             loader = new PdfLoader();
-        }else {
+        } else {
             loader = new TextLoader();
         }
 

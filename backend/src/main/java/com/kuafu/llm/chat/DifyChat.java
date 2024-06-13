@@ -170,10 +170,10 @@ public class DifyChat implements Chat {
             String event = jsonObject.get("event").getAsString();
             if (event.equals("message")) {
                 String conversation_id = jsonObject.get("conversation_id").getAsString();
-                 String answer = jsonObject.get("answer").getAsString();
-                 ChatResponse chatResponse = new ChatResponse();
-                 chatResponse.setAnswer(answer);
-                 chatResponse.setConversionId(conversation_id);
+                String answer = jsonObject.get("answer").getAsString();
+                ChatResponse chatResponse = new ChatResponse();
+                chatResponse.setAnswer(answer);
+                chatResponse.setConversionId(conversation_id);
                 return chatResponse;
             } else {
                 System.out.println(jsonObject);

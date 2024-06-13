@@ -47,10 +47,9 @@ public class ChatController {
         log.info("embedding search: {}", search);
 
 
-
-        String conversionId= chatRequest.getConversionId();
-        if (StringUtils.isEmpty(conversionId)){
-             ChatResponse chatResponse = chat.callApiBlock(PromptConfig.PROMPT + "\n当你接收到这段话时,你只需要回复【收到】即可，不要回复多余的内容",
+        String conversionId = chatRequest.getConversionId();
+        if (StringUtils.isEmpty(conversionId)) {
+            ChatResponse chatResponse = chat.callApiBlock(PromptConfig.PROMPT + "\n当你接收到这段话时,你只需要回复【收到】即可，不要回复多余的内容",
                     null, chatRequest.getUserId());
             conversionId = chatResponse.getConversionId();
         }
