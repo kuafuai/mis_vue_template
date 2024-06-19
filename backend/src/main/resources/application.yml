@@ -46,7 +46,7 @@ mybatis-plus:
 
 
 login:
-  enable: ${LOGIN_ENABLE:true}
+  enable: ${LOGIN_ENABLE:false}
   table: UserInfo
   select:
     table: UserInfo
