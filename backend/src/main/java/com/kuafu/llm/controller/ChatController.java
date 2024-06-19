@@ -43,26 +43,29 @@ public class ChatController {
         // 用于创建一个 SSE 连接对象
         SseEmitter emitter = new SseEmitter(3600000L);
         List<String> search = llmStartBusiness.search(chatRequest.getQuery());
-
         log.info("embedding search: {}", search);
 
-
         String conversionId = chatRequest.getConversionId();
+
+        String query = chatRequest.getQuery();
+
         if (StringUtils.isEmpty(conversionId)) {
-            ChatResponse chatResponse = chat.callApiBlock(PromptConfig.PROMPT + "\n当你接收到这段话时,你只需要回复【收到】即可，不要回复多余的内容",
-                    null, chatRequest.getUserId());
-            conversionId = chatResponse.getConversionId();
+
+            query = PromptConfig.PROMPT + "\n" + query;
+//            ChatResponse chatResponse = chat.callApiBlock(PromptConfig.PROMPT + "\n当你接收到这段话时,你只需要回复【收到】即可，不要回复多余的内容",
+//                    null, chatRequest.getUserId());
+//            conversionId = chatResponse.getConversionId();
         }
 
         StringBuilder context = new StringBuilder("context is \n");
         for (String s : search) {
             context.append(s).append("\n");
         }
+        query = query + "\n" + context;
 
-        log.info("content : {}", context);
+        log.info("content : {}", query);
 
-        chat.callApiStream(chatRequest.getQuery() + "\n" + context,
-                conversionId, chatRequest.getUserId(), emitter);
+        chat.callApiStream(query, conversionId, chatRequest.getUserId(), emitter);
 
         // 在后台线程中模拟实时数据
         return emitter;
