@@ -31,7 +31,7 @@
         <h3 class="flex-center-center p-y-10 text-color-primary">{{ left_title }}</h3>
         <el-menu class="el-menu-vertical-demo" @select="handleSelect">
             <div v-for="item in dynamicRoutes" :key="item.path">
-                <el-menu-item :index="item.path">
+                <el-menu-item v-if="!item.meta.shownot" :index="item.path">
                     <template #title>{{ item.meta.title }}</template>
                 </el-menu-item>    
             </div>

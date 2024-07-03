@@ -28,6 +28,8 @@ const props = defineProps({
     api: { type: String, default: '' },
     //是否分页
     isPage: { type: Boolean, default: () => false },
+    path: {type: String },
+    query: { type: Object, default: () => {} }
 });
 
 let isLoading = ref(true);
@@ -108,7 +110,20 @@ function handleSizeChange(val) {
 }
 
 function click_ok(item){
-    emits('click',item);
+    if(props.path){
+      let query = {};
+      for (let key in props.query) {
+        if (props.query.hasOwnProperty(key)) {
+          let value = props.query[key];
+          let prop_value = value.split('.').reduce((acc, part) => acc[part], { item });
+          query[key] = prop_value;
+        }
+      }
+      proxy.$router.push({path: props.path, query: query});
+    }
+    else{
+      emits('click',item);
+    }
 }
 
 </script>
