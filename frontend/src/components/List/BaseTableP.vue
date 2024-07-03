@@ -6,7 +6,7 @@
             v-loading="isLoading"
             v-bind="$attrs"
             :data="isPage ? pageRes.records : tableDataList"
-            size="small"
+            style="width: 100%;"
             highlight-current-row
             :border="true"
             >
