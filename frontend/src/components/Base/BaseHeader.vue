@@ -10,11 +10,11 @@
   defineProps({
     top: {
       type: Number,
-      default: 10,
+      default: 0,
     },
     bottom: {
       type: Number,
-      default: 10,
+      default: 5,
     },
   });
 </script>
