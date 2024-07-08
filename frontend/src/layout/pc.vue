@@ -10,7 +10,7 @@
                 </div>
             </el-menu>
         </div>
-        <div class="flex-1 flex-column m-l-10" :style="{height: appMainHeight+'px', width: appMainWidth+'px'}">
+        <div class="flex-1 flex-column m-l-10 overflow-y-scroll" :style="{height: appMainHeight+'px', width: appMainWidth+'px'}">
           <!-- 主页面 -->
           <router-view />
         </div>
