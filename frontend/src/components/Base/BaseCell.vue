@@ -1,6 +1,6 @@
 <template>
   <div v-bind="$attrs">
-    <div class="text-center bg-color-lightgrey p-y-10 ">
+    <div class="text-center bg-color-lightgrey p-y-10 " style="border: 1px solid rgb(230, 233, 240);">
       <span>{{ header }}</span>
     </div>
     <slot />
