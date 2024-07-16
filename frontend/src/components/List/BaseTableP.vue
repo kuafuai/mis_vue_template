@@ -160,3 +160,13 @@ function handleSizeChange(val) {
 }
 
 </script>
+
+<style lang="scss" scoped>
+
+.el-table {
+  :deep(.cell) {
+    padding: 0;
+  }
+}
+
+</style>

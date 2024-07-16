@@ -1,7 +1,7 @@
 <template>
   <div v-bind="$attrs">
-    <div class="text-center bg-color-lightgrey p-y-10 " style="border: 1px solid rgb(230, 233, 240);">
-      <span>{{ header }}</span>
+    <div class=" bg-color-lightgrey p-y-10 " style="border: 1px solid rgb(230, 233, 240); border-radius: 10px 10px 0px 0px;">
+      <span class="m-l-10" style="font-weight: bold; font-size: 16px;">{{ header }}</span>
     </div>
     <slot />
   </div>

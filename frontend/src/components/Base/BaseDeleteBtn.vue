@@ -7,7 +7,9 @@
           <el-button link @click="handleOk">确定</el-button>
         </div>
         <template #reference>
-          <el-button link style="margin-left: 5px; color: #f36161" @click="visible = true"> 删除 </el-button>
+          <el-button link style="margin-left: 5px; color: #f36161" @click="visible = true"> 
+            <el-icon class="m-r-6"><Delete /></el-icon>  删除 
+          </el-button>
         </template>
       </el-popover>
     </span>

@@ -1,6 +1,6 @@
 <template>
   <div class="app flex">
-    <div class="flex-end-center p-y-10 bg-color-lightgrey" :style="{ width: computedLabelWidth }">
+    <div class="flex-end-center p-y-10 bg-color-lightgrey" :style="{ width: computedLabelWidth}">
       <span class="m-r-10">{{ label }}</span>
     </div>
     <div class="flex-1 flex-start-center m-x-10">
@@ -32,5 +32,12 @@ const computedLabelWidth = computed(() => {
   &:not(:first-child) {
     border-top: none;
   }
+
+  &:last-child {
+    border-radius: 0px 0px 10px 10px;
+  }
+
+  
+
 }
 </style>
