@@ -74,7 +74,7 @@
 </div>
 
 <div v-if="$route.meta.isParentView" class="h-full">
-        <router-view />
+    <router-view />
 </div>
 
 

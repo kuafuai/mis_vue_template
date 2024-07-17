@@ -6,6 +6,7 @@
 <script setup>
 
 const { proxy } = getCurrentInstance();
+const type = import.meta.env.VITE_APP_TYPE;
 
 const props = defineProps({
   display: { type: String, default: ''},
@@ -33,7 +34,12 @@ function get_wrapper_class(){
         c += ' h-full ';
     }
     else {
-        c += ' p-10 h-full ';
+        if(type.value === 'PC'){
+            c += ' p-10 h-full ';
+        }
+        else{
+            c += ' h-full ';
+        }
     }
 
     if( props.w_full){
