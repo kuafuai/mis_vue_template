@@ -46,7 +46,7 @@
     </base-layout>
 
     <base-layout v-else display="flex" direction="c" :w_full="true">
-        <base-layout display="flex" x="end" :w_full="true">
+        <base-layout display="flex" x="end" :w_full="true" class="p-x-20">
             <el-input v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  placeholder="请输入要搜索的内容" >
                 <template #suffix>
                     <el-icon @click="onSearch"><Search /></el-icon>
@@ -57,7 +57,7 @@
                 <el-icon><More /></el-icon>
             </el-button>
         </base-layout>
-        <base-layout class="m-t-20" display="flex">
+        <base-layout class="m-t-20 m-l-20" display="flex">
             <el-button round @click="eventAdd"><el-icon class="m-r-6"><CirclePlus /></el-icon> 添加</el-button>
 
             <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>
