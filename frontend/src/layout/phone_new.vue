@@ -1,5 +1,5 @@
 <template>
-    <div v-show="!$route.meta.isParentView" class="p-1 h-full bg-color-purple flex-c-between-start">
+    <div v-show="!$route.meta.isParentView" class="p-1 h-full bg-color-purplb flex-c-between-start">
       <div class="head w-full flex-between-center">
         <div class="m-l-20">
           <el-icon  :size="30" @click="drawer=true"><Expand color="white" /></el-icon>

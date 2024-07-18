@@ -19,6 +19,7 @@ $colors: (
   // 遮罩颜色
   'mask': rgba(0, 0, 0, 0.4),
   'purple': #736EEB,
+  'purplb': #5D5FEF,
 );
 @each $key, $value in $colors {
   .text-color-#{$key} {
