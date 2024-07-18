@@ -2,7 +2,7 @@
 
     <base-layout v-if="type==='PC'" display="flex" direction="c" :w_full="true">
         <base-layout display="flex" x="between" :w_full="true">
-            <base-layout display="flex">
+            <base-layout display="flex" class="m-l-20">
                 <el-button round @click="eventAdd"><el-icon class="m-r-6"><CirclePlus /></el-icon> 添加</el-button>
 
                 <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>
@@ -10,7 +10,7 @@
                 <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>
                 
             </base-layout>
-            <base-layout display="flex">
+            <base-layout display="flex" class="m-r-20">
                 <el-input v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  placeholder="请输入要搜索的内容" >
                     <template #suffix>
                         <el-icon @click="onSearch"><Search /></el-icon>
@@ -28,7 +28,7 @@
 
             </base-layout>
         </base-layout>
-        <base-layout class="m-t-20">
+        <base-layout class="m-t-20 m-l-20">
             <el-form :inline="true" :model="props.searchData"  class="search-form-inline w-full">
                 <el-collapse-transition>
                     <div v-show="advanced">

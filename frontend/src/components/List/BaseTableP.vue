@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="m-x-20">
         <slot name="custom-header" />
         <el-table 
             ref="baseTableRef" 
