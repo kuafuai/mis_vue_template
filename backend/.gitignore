@@ -36,3 +36,4 @@ ChromaUtils/venv/
 ChromaUtils/.idea/
 ChromaUtils/chroma_db/
 demo.sqlite
+src/main/resources/application.yml
