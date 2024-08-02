@@ -32,3 +32,7 @@ build/
 
 ### VS Code ###
 .vscode/
+ChromaUtils/venv/
+ChromaUtils/.idea/
+ChromaUtils/chroma_db/
+demo.sqlite

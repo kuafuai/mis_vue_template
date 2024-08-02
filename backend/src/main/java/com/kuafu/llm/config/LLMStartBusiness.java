@@ -32,17 +32,17 @@ public class LLMStartBusiness {
 
     public void createEmbedding(List<String> documents) {
 
-        for (String text : documents) {
+//        for (String text : documents) {
 
-            List<Double> vectors = embedding.embedding(text);
+//            List<Double> vectors = embedding.embedding(text);
 
-            boolean flag = vector.save(defaultCollectionName, text, vectors);
-            log.info("save vector : {}", flag);
-        }
+        boolean flag = vector.save(defaultCollectionName, documents);
+        log.info("save vector : {}", flag);
+//        }
     }
 
     public List<String> search(String text) {
-        List<Double> vectors = embedding.embedding(text);
-        return vector.search(defaultCollectionName, vectors);
+//        List<Double> vectors = embedding.embedding(text);
+        return vector.search(defaultCollectionName, text);
     }
 }

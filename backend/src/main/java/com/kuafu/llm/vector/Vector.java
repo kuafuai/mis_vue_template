@@ -23,6 +23,8 @@ public interface Vector {
 
     boolean save(String collectionName, String text, List<Double> vectors);
 
+    boolean save(String collectionName, List<String> text);
+
     /**
      * 搜索
      *
@@ -31,6 +33,10 @@ public interface Vector {
      * @return
      */
     List<String> search(String collectionName, List<Double> vectors);
+
+
+
+    List<String> search(String collectionName, String searchText);
 
     /**
      * 获取 集合

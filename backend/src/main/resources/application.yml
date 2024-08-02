@@ -63,15 +63,15 @@ llm:
   vector:
     provider: ${VECTOR_PROVIDER:ali}
     collection_name: ${VECTOR_COLLECT_NAME:test}
-    api_key: ${VECTOR_KEY:sk-YZlXBOCo011rIkIKA0MrVnGq6GVcl453158DC1D6C11EF871B421CA686AEFB}
-    end_point: ${VECTOR_POINT:vrs-cn-o493rha5i00015.dashvector.cn-beijing.aliyuncs.com}
+    api_key: ${VECTOR_KEY:xxxxxxx}
+    end_point: ${VECTOR_POINT:xxxxxxx}
   embedding:
     provider: ${EMBEDDING_PROVIDER:ali}
-    api_key: ${EMBEDDING_KEY:sk-bdee674292b9420d8328325d794a78c5}
+    api_key: ${EMBEDDING_KEY:xxxxxxxx}
   chat:
     provider: ${CHAT_PROVIDER:dify}
-    dify_key: ${CHAT_DIFY_KEY:app-AOoj2JH4sQIijF80rFRal9IV}
-    dify_api: ${CHAT_DIDY_API:http://121.37.137.221:6789/v1}
+    dify_key: ${CHAT_DIFY_KEY:xxxxxxxx}
+    dify_api: ${CHAT_DIDY_API:xxxxxxxxx}
     default_prompt: ${CHAT_DEFAULT_PROMPT:你是一名小助手}
 
 

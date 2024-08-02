@@ -80,6 +80,11 @@ public class AliVector implements Vector, InitializingBean {
     }
 
     @Override
+    public boolean save(String collectionName, List<String> text) {
+        return false;
+    }
+
+    @Override
     public List<String> search(String collectionName, List<Double> vectors) {
 
         DashVectorCollection collection = getClient().get(collectionName);
@@ -98,6 +103,11 @@ public class AliVector implements Vector, InitializingBean {
         } else {
             return Lists.newArrayList();
         }
+    }
+
+    @Override
+    public List<String> search(String collectionName, String searchText) {
+        return null;
     }
 
     @Override
