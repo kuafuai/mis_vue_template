@@ -17,7 +17,7 @@ import java.util.List;
 class RemoteVectorTest {
 
     @Resource
-    private Vector vector;
+    private RemoteVector  vector;
 
     @Test
     void save() {
@@ -34,4 +34,8 @@ class RemoteVectorTest {
         System.out.println(search);
     }
 
+    @Test
+    void startRemoteVector() {
+        vector.startRemoteVector();
+    }
 }

@@ -6,7 +6,8 @@ import warnings
 
 from urllib3.exceptions import NotOpenSSLWarning
 
-from config import api_key
+api_key = "xxxxxxxxxx"  # 需要的apikey
+mq_port = 46758  # 与Java线程通信的端口
 
 warnings.filterwarnings("ignore", category=NotOpenSSLWarning)  # 忽略所有的警告
 
@@ -17,8 +18,6 @@ import dashscope
 from chromadb import EmbeddingFunction
 from chromadb.api import Embeddable
 from chromadb.api.types import D, Embeddings
-
-
 
 
 class MyCustomEmbeddingFunction(EmbeddingFunction[Embeddable]):
@@ -45,16 +44,18 @@ class MyCustomEmbeddingFunction(EmbeddingFunction[Embeddable]):
 
 
 # 集合的名称
-collection_name = "chatbot"
+# collection_name = "chatbot"
+
 embedding_model = "text-embedding-v1"
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
 
 embedding_function = MyCustomEmbeddingFunction()  # embedding函数
-collection = chroma_client.get_or_create_collection(name=collection_name,
-                                                    embedding_function=embedding_function)
+
 
 # 添加文本到集合汇总
-def add_text(embedding_text):
+def add_text(collection_name, embedding_text):
+    collection = chroma_client.get_or_create_collection(name=collection_name,
+                                                        embedding_function=embedding_function)
     embedding_ = embedding_function(embedding_text)
     ids = []
     for item in embedding_text:
@@ -62,8 +63,11 @@ def add_text(embedding_text):
         ids.append(doc_id)
     collection.add(embeddings=embedding_, documents=embedding_text, ids=ids)
 
+
 # 根据文本搜索结果
-def search(text):
+def search(collection_name, text):
+    collection = chroma_client.get_or_create_collection(name=collection_name,
+                                                        embedding_function=embedding_function)
     # query_text = embed_with_str("衣服质量")
     results = collection.query(
         # query_embeddings=[query_text],
@@ -72,12 +76,13 @@ def search(text):
     # print(results["documents"])
     return results["documents"]
 
+
 import zmq
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.bind("tcp://*:46758")
-
+socket.bind(f"tcp://*:{mq_port}")
+print(1, flush=True)
 while True:
     message = socket.recv()
     print(message.decode('utf-8'))
@@ -91,11 +96,13 @@ while True:
     }
     try:
         if message_dict["type"] == 'add':
-            add_text(message_dict['text'])
+            add_text(message_dict["collectionName"], message_dict['text'])
             # result_dict['result'] =
         elif message_dict['type'] == 'query':
-            s_list = search(message_dict['text'])
+            s_list = search(message_dict["collectionName"], message_dict['text'])
             result_dict['result'] = s_list
+        elif message_dict['type'] == 'heartbeat':
+            result_dict['msg'] = "success"
         socket.send(json.dumps(result_dict).encode("utf8"))
     except   Exception as e:
         print(e)
