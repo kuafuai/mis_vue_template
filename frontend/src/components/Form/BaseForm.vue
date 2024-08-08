@@ -3,8 +3,8 @@
            @submit.prevent="onSubmit">
     <slot name="form-items"></slot>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">Submit</el-button>
-      <el-button @click="onResetForm">Reset</el-button>
+      <el-button type="primary" @click="onSubmit">提交</el-button>
+      <el-button @click="onResetForm">重置</el-button>
     </el-form-item>
   </el-form>
 </template>
