@@ -30,14 +30,17 @@ let router = useRouter()
 let route = useRoute()
 const closeDialog = () => {
   // const { path, query, params } = route.value;
-  location.reload()
-  router.go(0)
+  // location.reload()
+  // router.go(0)
   dialogVisible.value = false
 
   // router.push({path:"/sales_lead"})
   // 先导航到一个空路径，然后再导航回原来的路径
   //   router.push({ path, query, params });
 }
+defineExpose({
+  closeDialog
+})
 </script>
 
 <style scoped>

@@ -10,40 +10,48 @@
 </template>
 
 <script setup>
+const {proxy} = getCurrentInstance();
 // Importing to define props and emit
 import {defineProps, defineEmits} from 'vue';
 import {ElMessage} from 'element-plus';
-
 // Defining props to receive form and rules from parent
 const props = defineProps({
   form: {
     type: Object,
-    required: true
+    required: false
   },
   rules: {
     type: Object,
-    required: true
+    required: false
+  },
+  table_module: {
+    type: String,
+    required: false
   }
+
 });
 
 // Emit to notify parent of form submission
-const emit = defineEmits(['submit']);
-
+const emit = defineEmits(['success', "fail"]);
+// Handle form submission
+const handleSubmit = async () => {
+  try {
+    let res = await proxy.$api[props.table_module]["add"](props.form);
+    console.log(res.data)
+    emit("success")
+  } catch (e) {
+    console.log(e)
+    emit("fail")
+  }
+}
 // Defining the submit function
 const onSubmit = () => {
   // Use the form reference to validate the form
-  formRef.value.validate((valid) => {
+  proxy.$refs.formRef.validate((valid) => {
     if (valid) {
-      ElMessage.success('Form submitted successfully!');
-      try {
-        emit('submit', props.form);
-        //  成功的方法
-      } catch (e) {
-        //  提交失败的方法
-      }
+      handleSubmit()
       // Emitting the 'submit' event with form data
     } else {
-      ElMessage.error('Please correct the errors in the form');
       return false;
     }
   });
@@ -54,11 +62,6 @@ const onResetForm = () => {
   formRef.value.resetFields();
   ElMessage.info('Form reset successfully!');
 };
-
-// Define a ref for the form to access its methods
-import {ref} from 'vue';
-
-const formRef = ref(null);
 </script>
 
 <style scoped>
