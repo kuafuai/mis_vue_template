@@ -46,14 +46,14 @@ mybatis-plus:
 
 
 login:
-  enable: ${LOGIN_ENABLE:false}
-  table: UserInfo
+  enable: ${LOGIN_ENABLE:true}
+  table: Login
   select:
-    table: UserInfo
+    table: Login
     column: phone_number
   openid:
-    table: UserInfo
-    column: wechat_login_id
+    table: Login
+    column: wx_open_id
 
 python:
   env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}
