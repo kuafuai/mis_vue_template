@@ -8,6 +8,16 @@ import java.util.Collection;
 
 public class LoginUser implements UserDetails {
 
+    private  String relevanceId;
+
+    public String getRelevanceId() {
+        return relevanceId;
+    }
+
+    public void setRelevanceId(String relevanceId) {
+        this.relevanceId = relevanceId;
+    }
+
     /**
      * 用户ID
      */
@@ -36,6 +46,11 @@ public class LoginUser implements UserDetails {
 
     public LoginUser(Integer id) {
         this.userId = id.longValue();
+    }
+
+    public LoginUser(Long userId, String relevanceId) {
+        this.userId = userId;
+        this.relevanceId=relevanceId;
     }
 
     public Long getUserId() {

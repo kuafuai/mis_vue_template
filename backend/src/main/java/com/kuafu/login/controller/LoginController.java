@@ -7,6 +7,7 @@ import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
 import com.kuafu.common.exception.BusinessException;
 import com.kuafu.common.login.LoginUser;
+import com.kuafu.common.login.SecurityUtils;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.login.model.LoginVo;
 import com.kuafu.login.provider.WxAppAuthentication;
@@ -99,6 +100,19 @@ public class LoginController {
     @ApiOperation("获取当前登陆用户信息")
     @Log
     public BaseResponse getCurrentUser() {
-        return ResultUtils.success(loginBusinessService.getCurrentUser());
+        final Object currentUser = loginBusinessService.getCurrentUser();
+        return ResultUtils.success(currentUser);
+    }
+
+    @GetMapping("/getLoginUser")
+    @ApiOperation("获取当前登陆登陆用户信息（缓存中）")
+    @Log
+    public BaseResponse getLoginUser() {
+//        final Object currentUser = loginBusinessService.getCurrentUser();
+        final LoginUser loginUser = SecurityUtils.getLoginUser();
+        loginUser.setToken(null);
+        loginUser.setLoginTime(null);
+        loginUser.setUserId(Long.valueOf(loginUser.getRelevanceId()));
+        return ResultUtils.success(loginUser);
     }
 }

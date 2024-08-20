@@ -15,6 +15,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 
 @Component
 @ConditionalOnProperty(prefix = "login", name = "enable")
@@ -44,8 +46,10 @@ public class UserNameProvider implements AuthenticationProvider {
         }
 
         Long userId = loginBusinessService.getId(current);
-
-        return new UsernamePasswordAuthenticationToken(new LoginUser(userId), "", authentication.getAuthorities());
+//      获取关联表的id
+        String relevanceId = Optional.ofNullable(loginBusinessService.getValue(current, "relevanceId"))
+                .map(Object::toString).orElse(null);
+        return new UsernamePasswordAuthenticationToken(new LoginUser(userId, relevanceId), "", authentication.getAuthorities());
     }
 
     @Override

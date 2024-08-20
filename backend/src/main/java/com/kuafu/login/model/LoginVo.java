@@ -16,4 +16,7 @@ public class LoginVo {
 
     @Schema(description = "state")
     private String state;
+
+
+
 }

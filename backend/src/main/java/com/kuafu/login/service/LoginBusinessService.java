@@ -6,10 +6,12 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.exception.BusinessException;
+import com.kuafu.common.login.LoginUser;
 import com.kuafu.common.login.SecurityUtils;
 import com.kuafu.common.util.SpringUtils;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.common.util.WrapperFactory;
+import com.kuafu.login.config.LoginRelevanceConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -37,13 +39,16 @@ public class LoginBusinessService {
     // openid
     @Value("${login.openid.table:table}")
     private String openid_table;
-    @Value("${login.openid.column:wechat_login_id}")
+    @Value("${login.openid.column:wx_open_id}")
     private String openid_table_column;
 
 
     public Object getCurrentUser() {
-        IService iService = SpringUtils.getBean(login_table);
-        return iService.getById(SecurityUtils.getUserId());
+//      获取的是关联对象的详细记录
+        IService iService = SpringUtils.getBean(LoginRelevanceConfig.loginRelevanceTable);
+        final LoginUser loginUser = SecurityUtils.getLoginUser();
+
+        return iService.getById(loginUser.getRelevanceId());
     }
 
     /**
@@ -147,7 +152,9 @@ public class LoginBusinessService {
     private Object getUser(String table, String key, Object value) {
         IService iService = SpringUtils.getBean(table);
         QueryWrapper<?> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq(key, value);
+        queryWrapper.eq(key, value)
+                .eq("relevance_table", LoginRelevanceConfig.loginRelevanceTable);
+
         return iService.getOne(queryWrapper);
     }
 
@@ -175,7 +182,7 @@ public class LoginBusinessService {
                 Class<?> entityClazz = Class.forName(entityType.getTypeName());
                 return entityClazz.getDeclaredConstructor().newInstance();
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
-                     InvocationTargetException e) {
+                    InvocationTargetException e) {
                 throw new RuntimeException(e);
             }
         } else {
@@ -194,4 +201,21 @@ public class LoginBusinessService {
     }
 
 
+    public Object getValue(Object current, String fileName) {
+        final Class<?> aClass = current.getClass();
+        final Field[] declaredFields = aClass.getDeclaredFields();
+        try {
+            for (Field f : declaredFields) {
+                f.setAccessible(true);
+                final String name = f.getName();
+                if (StringUtils.equalsIgnoreCase(name, fileName)) {
+                    return f.get(current);
+                }
+            }
+            return null;
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "关联字段不存在");
+        }
+    }
 }

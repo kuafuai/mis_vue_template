@@ -8,15 +8,12 @@
     <div v-if="isPage" class="flex-end-center m-t-10 m-r-10">
       <el-pagination
           v-if="pageRes && pageRes.total > 0"
-          :current-page="pageParams.current"
-          :page-size="pageParams.pageSize"
+          :pageSize="pageParams.pageSize"
+          :current="pageParams.current"
           :total="pageRes.total == null ? 0 : pageRes.total"
-          :page-sizes="[10, 20]"
-          :background="true"
-          :pager-count="5"
-          layout="prev, pager, next"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"/>
+          :showIcon="true"
+          @change="handleSizeChange"
+          />
     </div>
   </div>
 </template>
@@ -98,6 +95,7 @@ async function getApiData(pageObj) {
   if (props.isPage) {
     // 处理分页参数
     if (pageObj) {
+      console.log(pageObj)
       // 从分页组件中拿到数据
       pageParams.value.current = pageObj.page;
       pageParams.value.pageSize = pageObj.limit;
@@ -129,29 +127,31 @@ function handleCurrentChange(val) {
 }
 
 function handleSizeChange(val) {
+  console.log("val",val)
   getApiData({page: pageParams.value.current, limit: val});
 }
 
 function click_ok(item) {
-  if (props.is_route) {
-    if (props.path) {
-      let query = {};
-      for (let key in props.query) {
-        if (props.query.hasOwnProperty(key)) {
-          let value = props.query[key];
-          // todo 获取参数
-          console.log(value)
-          // let prop_value = value.split('.').reduce((acc, part) => acc[part], {item});
-          query[key] = item[value];
-        }
-      }
-      console.log("this", query)
-      proxy.$router.push({path: props.path, query: query});
-    }
-    // else {
-    //   emits('click', item);
-    // }
-  }
+  emits("click", item)
+  // if (props.is_route) {
+  //   if (props.path) {
+  //     let query = {};
+  //     for (let key in props.query) {
+  //       if (props.query.hasOwnProperty(key)) {
+  //         let value = props.query[key];
+  //         // todo 获取参数
+  //         console.log(value)
+  //         // let prop_value = value.split('.').reduce((acc, part) => acc[part], {item});
+  //         query[key] = item[value];
+  //       }
+  //     }
+  //     console.log("this", query)
+  //     proxy.$router.push({path: props.path, query: query});
+  //   }
+  //   // else {
+  //   //   emits('click', item);
+  //   // }
+  // }
 
 }
 

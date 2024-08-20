@@ -2,7 +2,8 @@
     <div v-show="!$route.meta.isParentView" class="p-1 h-full bg-color-purplb flex-c-between-start">
       <div class="head w-full flex-between-center">
         <div class="m-l-20">
-          <el-icon  :size="30" @click="drawer=true"><Expand color="white" /></el-icon>
+          <el-icon  :size="30" @click="drawer=true"><Expand color="white" />
+          </el-icon>
           <!-- <el-icon v-else :size="30" @click="goHome"><HomeFilled color="white" /></el-icon> -->
         </div>
         <div class="text-color-white">{{ pageTitle }}</div>
@@ -15,7 +16,7 @@
       </div>
       <div class="foot w-full bg-color-white flex-c-center-center">
         <span>Powered by CodeFlying</span>
-      </div>  
+      </div>
     </div>
   
     <div v-if="$route.meta.isParentView" class="h-full w-full">
@@ -28,9 +29,9 @@
       :show-close="false"
       direction="ltr"
       >
-       
+
       <div class="flex-c-between-start h-full">
-        <div class="w-full"> 
+        <div class="w-full">
             <div class="flex-start-center m-30 ">
                 <img src="@/assets/logo/logo.png" width="32px" height="34px" />
                 <span class="m-l-10" style="font-weight: bold; font-size: 24px;">CodeFlying</span>
@@ -48,11 +49,14 @@
                 class="el-menu-vertical-demo m-l-20 m-r-10"
                 @select="handleSelect"
             >
-            
+              <el-menu-item  index="/login_manger">
+                <template #title>登陆信息管理</template>
+              </el-menu-item>
+
                 <div v-for="item in dynamicRoutes" :key="item.path">
                     <el-menu-item v-if="!item.meta.shownot" :index="item.path">
                         <template #title>{{ item.meta.title }}</template>
-                    </el-menu-item>    
+                    </el-menu-item>
                 </div>
 
             </el-menu>
