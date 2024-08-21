@@ -1,0 +1,50 @@
+<template>
+    <el-select v-bind="$attrs">
+        <el-option
+            v-for="item in select_value"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            />
+    </el-select>
+</template>
+
+<script setup>
+const { proxy } = getCurrentInstance();
+const props = defineProps({
+  params: { type: Object, default: () => {} },  
+  api: { type: String, default: '' }
+});
+
+const select_value = ref([]);
+
+onMounted(() => {
+  refresh();
+});
+
+// 刷新
+function refresh() {
+  getApiData();
+}
+
+// 获取接口数据
+async function getApiData() {
+  if (!props.api) {
+    return;
+  }
+  
+  let response = await apiMethod(props.params);
+  select_value.value = response.data;
+}
+
+function apiMethod(params, headers) {
+  // eg: proxy.$api.sys_user.save(xx);
+  let data = {...params};
+  if(headers){
+    data = Object.assign(data, headers.value);
+  }
+  return props.api.split('.').reduce((acc, item) => acc[item], proxy.$api)(data);
+}
+
+
+</script>
