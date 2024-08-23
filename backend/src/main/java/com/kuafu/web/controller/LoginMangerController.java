@@ -130,4 +130,15 @@ public class LoginMangerController {
         final List<SelectVO> all = LoginReverence.all();
         return ResultUtils.success(all);
     }
+
+    @GetMapping("relevance/get_value")
+    @ApiOperation("关联业务类型")
+    public BaseResponse get_relevance_value(@RequestParam(value = "relevance") String relevance) {
+        String value = LoginReverenceValue.getValue(relevance);
+        if (StringUtils.isNotEmpty(value)) {
+            return ResultUtils.success(value);
+        } else {
+            return ResultUtils.error();
+        }
+    }
 }

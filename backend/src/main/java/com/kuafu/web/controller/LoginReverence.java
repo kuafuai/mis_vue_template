@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 @Getter
 public enum LoginReverence {
 
-    SalesStatus("销售状态", "SalesStatus"), SalesLead("客户线索", "SalesLead"), SalesLeadItem("客户项目", "SalesLeadItem"), UserInfo("跟进人信息", "UserInfo"), Partner("合作伙伴信息", "Partner"), WithdrawalTransactions("提现金额表", "WithdrawalTransactions"), AmountStatus("提现金额状态", "AmountStatus"), EndAmountStatus("中间入账状态", "EndAmountStatus"), Login("登录表", "Login"),
-    ;
+industry("行业表","industry"),personnelScale("人员规模","personnelScale"),customerHierarchy("客户分层","customerHierarchy"),leadStatus("线索状态","leadStatus"),customerStage("客户阶段","customerStage"),opportunityStatus("商机状态","opportunityStatus"),salesman("销售人员","salesman"),customer("客户表","customer"),visitManagement("客户拜访","visitManagement"),businessOpportunity("商机管理","businessOpportunity"),login("登录表","login"),;
     private String label;
     private String value;
 
