@@ -122,11 +122,12 @@
       </el-form-item>
 
       <el-form-item   label="绑定业务" prop="relevanceTable">
-          <base-select v-model="form.relevanceTable" placeholder="请输选择" api="login_manger.relevance_all"></base-select>
+          <base-select v-model="form.relevanceTable" placeholder="请输选择" api="login_manger.relevance_all" @change="relevance_change"></base-select>
       </el-form-item>
 
       <el-form-item  label="绑定业务ID" prop="relevanceId">
-          <el-input placeholder="请输入绑定业务ID" v-model="form.relevanceId" />
+          <!-- <el-input placeholder="请输入绑定业务ID" v-model="form.relevanceId" /> -->
+          <base-select v-model="form.relevanceId" placeholder="请输选择" :api="relevance_value_api" ></base-select>
       </el-form-item>
   
   </el-form>
@@ -219,6 +220,20 @@
       dialogVisible.value = true;
       dialogStatus.value = 'update';
   }
+
+  const relevance_value_api= ref('');
+
+  async function relevance_change(value){
+    
+    let res = await proxy.$api.login_manger.relevance_get_value({relevance: value})
+    
+    if(res.code == 0){
+      relevance_value_api.value = res.data;
+      console.log(relevance_value_api.value)
+    }
+  }
+
+
   </script>
   
   <style lang="scss" scoped></style>

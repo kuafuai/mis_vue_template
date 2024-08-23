@@ -40,5 +40,12 @@ export default {
             url: BASE_API + "/relevance/all",
             method: "get"
         });
+    },
+    relevance_get_value(data) {
+        return request({
+            url: BASE_API + "/relevance/get_value",
+            method: "get",
+            params: data
+        });
     }
 };

@@ -18,9 +18,27 @@ const props = defineProps({
 
 const select_value = ref([]);
 
-onMounted(() => {
-  refresh();
-});
+// onMounted(() => {
+//   refresh();
+// });
+
+watch(
+  () => props.api,
+  (newValue, oldValue) => {
+    // console.log('监听器执行了... ', newValue, oldValue);
+    // pageRes = [];
+    // if (!props.isPage || (newValue && newValue.length > 0)) {
+    //   tableDataList.value = newValue;
+    // }
+    if(newValue){
+      refresh();
+    }
+  },
+  {
+    immediate: true, // 初始化执行一次
+    deep: true, // 深度监听
+  },
+);
 
 // 刷新
 function refresh() {
