@@ -8,7 +8,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: org.sqlite.JDBC
     druid:
-      url: jdbc:sqlite:demo.sqlite
+      url: jdbc:sqlite:${SQLITE_PATH:demo.sqlite}
       username:
       password:
 
