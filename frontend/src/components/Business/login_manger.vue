@@ -117,9 +117,9 @@
           <el-input placeholder="请输入用户名" v-model="form.userName" />
       </el-form-item>
   
-      <el-form-item  v-if='dialogStatus == "add"' label="密码" prop="password">
-          <el-input placeholder="请输入身份证号" v-model="form.password" />
-      </el-form-item>
+<!--      <el-form-item  v-if='dialogStatus == "add"' label="密码" prop="password">-->
+<!--          <el-input placeholder="请输入身份证号" v-model="form.password" />-->
+<!--      </el-form-item>-->
 
       <el-form-item   label="绑定业务" prop="relevanceTable">
           <base-select v-model="form.relevanceTable" placeholder="请输选择" api="login_manger.relevance_all" @change="relevance_change"></base-select>
