@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.exception.BusinessException;
 import com.kuafu.common.login.SecurityUtils;
 import com.kuafu.web.entity.Login;
 import com.kuafu.web.entity.SelectVO;
@@ -140,5 +141,25 @@ public class LoginMangerController {
         } else {
             return ResultUtils.error();
         }
+    }
+
+
+    @PostMapping("update_password")
+    @ApiOperation("修改密码")
+    public BaseResponse update_password(@RequestBody LoginVO vo) {
+        final Integer loginId = vo.getLoginId();
+        final String password = vo.getPassword();
+        if (loginId == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        if (StringUtils.isEmpty(password)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "密码不能为空");
+        }
+
+        final String encryptPassword = SecurityUtils.encryptPassword(password);
+        final Login entity = Login.builder().loginId(loginId)
+                .password(encryptPassword).build();
+        boolean flag = this.loginService.updateById(entity);
+        return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }
