@@ -5,9 +5,9 @@
             <base-layout display="flex" class="m-l-20">
                 <el-button round @click="eventAdd"><el-icon class="m-r-6"><CirclePlus /></el-icon> 添加</el-button>
 
-                <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>
+<!--                <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>-->
 
-                <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>
+<!--                <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>-->
                 
             </base-layout>
             <base-layout display="flex" class="m-r-20">
@@ -60,9 +60,9 @@
         <base-layout class="m-t-20 m-l-20" display="flex">
             <el-button round @click="eventAdd"><el-icon class="m-r-6"><CirclePlus /></el-icon> 添加</el-button>
 
-            <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>
+<!--            <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>-->
 
-            <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>
+<!--            <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>-->
                 
         </base-layout>
 
