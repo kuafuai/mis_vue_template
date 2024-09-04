@@ -47,5 +47,12 @@ export default {
             method: "get",
             params: data
         });
+    },
+    update_password(data){
+        return request({
+            url: BASE_API + "/update_password",
+            method: "post",
+            data: data
+        });
     }
 };
