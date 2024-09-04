@@ -7,6 +7,7 @@
           @refreshTableData="refreshTableData"
           @addEvent="handleAdd"
           firstSearchData="phoneNumber"
+          firstSearchComment="手机号"
       >
         <template #collapse>
           <el-form-item label="微信绑定ID" prop="wxOpenId">

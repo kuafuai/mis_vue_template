@@ -11,7 +11,7 @@
                 
             </base-layout>
             <base-layout display="flex" class="m-r-20">
-                <el-input v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  placeholder="请输入要搜索的内容" >
+              <el-input v-if="firstSearchData" v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  :placeholder="'请输入'+firstSearchComment" >
                     <template #suffix>
                         <el-icon @click="onSearch"><Search /></el-icon>
                     </template>
@@ -47,7 +47,7 @@
 
     <base-layout v-else display="flex" direction="c" :w_full="true">
         <base-layout display="flex" x="end" :w_full="true" class="p-x-20">
-            <el-input v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  placeholder="请输入要搜索的内容" >
+            <el-input v-if="firstSearchData" v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  :placeholder="'请输入'+firstSearchComment" >
                 <template #suffix>
                     <el-icon @click="onSearch"><Search /></el-icon>
                 </template>
@@ -95,7 +95,8 @@ const type = import.meta.env.VITE_APP_TYPE;
 const props = defineProps({
   searchItems: { type: Array, default: () => [] },
   searchData: { type: Object, default: () => {} },
-  firstSearchData: { type: String}
+  firstSearchData: { type: String},
+  firstSearchComment: { type: String,default:"要搜索的内容"}
 });
 
 const advanced = ref(false);
