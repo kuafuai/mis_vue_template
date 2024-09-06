@@ -7,7 +7,7 @@
           @refreshTableData="refreshTableData"
           @addEvent="handleAdd"
           firstSearchData="phoneNumber"
-          firstSearchComment="手机号"
+          firstSearchComment="手机号/用户名"
       >
         <template #collapse>
           <el-form-item label="微信绑定ID" prop="wxOpenId">
@@ -91,6 +91,10 @@
           ></base-delete-btn>
           <!--          <div>-->
           <el-button link style="margin-left: 5px; " @click="showDialog(scope.row.loginId)">
+            <!--            <el-icon class="el-icon-lock" />-->
+            <el-icon class="m-r-6">
+              <Lock/>
+            </el-icon>
             修改密码
           </el-button>
           <!--          </div>-->
@@ -103,6 +107,7 @@
         width="50%"
         style="max-width: 600px;"
         v-model="dialogVisible"
+        @close="closeDialog"
     >
       <el-form
           ref='dataFormRef'
@@ -133,7 +138,7 @@
                        @change="relevance_change"></base-select>
         </el-form-item>
 
-        <el-form-item label="绑定业务ID" prop="relevanceId">
+        <el-form-item label="绑定业务ID" prop="relevanceId" v-if="is_show_select">
           <!-- <el-input placeholder="请输入绑定业务ID" v-model="form.relevanceId" /> -->
           <base-select v-model="form.relevanceId" placeholder="请输选择" :api="relevance_value_api"></base-select>
         </el-form-item>
@@ -142,7 +147,7 @@
 
       <template #footer>
         <el-button
-            @click="dialogVisible = false"
+            @click="closeDialog"
             round
         >取 消
         </el-button>
@@ -241,11 +246,36 @@ function handleAdd() {
   dialogStatus.value = 'add';
   dialogVisible.value = true;
 }
+const relevance_value_api = ref('');
+const is_show_select = ref(false)
+const closeDialog=()=>{
+  dialogVisible.value = false
+  is_show_select.value=false
+}
+async function relevance_change(value) {
+  console.log("zhixing", value)
+  let res = await proxy.$api.login_manger.relevance_get_value({relevance: value})
+
+  if (res.code == 0) {
+    relevance_value_api.value = res.data;
+    is_show_select.value = true
+    console.log(relevance_value_api.value)
+  }
+}
 
 function handleUpdate(row) {
   form.value = Object.assign({}, row);
   dialogStatus.value = 'update';
   dialogVisible.value = true;
+  // if (dialogStatus.value == "update") {
+  // console.log("update", value)
+  //  请求数据
+  if (form.value.relevanceTable!=null && form.value.relevanceTable!=''){
+    is_show_select.value = false
+    relevance_change(form.value.relevanceTable)
+  }
+
+  // }
 }
 
 async function handleDelete(row) {
@@ -254,11 +284,15 @@ async function handleDelete(row) {
   proxy.$modal.msgSuccess(res.message);
 }
 
+
+
 function submitForm() {
   if (dialogStatus.value == 'detail') {
     dialogVisible.value = false;
   } else {
     proxy.$refs.dataFormRef.validate(async (valid) => {
+
+
       if (valid) {
         let res = await proxy.$api.login_manger[dialogStatus.value](form.value);
         proxy.$modal.msgSuccess(res.message);
@@ -275,17 +309,6 @@ function choose(item) {
   dialogStatus.value = 'update';
 }
 
-const relevance_value_api = ref('');
-
-async function relevance_change(value) {
-
-  let res = await proxy.$api.login_manger.relevance_get_value({relevance: value})
-
-  if (res.code == 0) {
-    relevance_value_api.value = res.data;
-    console.log(relevance_value_api.value)
-  }
-}
 
 const update_password_form = ref({})
 const update_password_dialog = ref(false)
