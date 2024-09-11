@@ -102,7 +102,8 @@ watch(() => props.modelValue, val => {
     fileList.value = list.map(item => {
       if (typeof item === "string") {
         if (item.indexOf(baseUrl) === -1) {
-          item = {name: baseUrl + item, url: baseUrl + item};
+          // item = {name: baseUrl + item, url: baseUrl + item};
+          item = {name: item, url: item};
         } else {
           item = {name: item, url: item};
         }
