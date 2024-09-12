@@ -8,6 +8,14 @@ export const constantRouters = [
             title: "登录",
         },
         component: () => import('@/views/login/index.vue'),
+    },
+    {
+        path: '/login_manger',
+        meta: {
+            title: '登陆信息',
+            shownot: false
+        },
+        component: ()=> import('@/views/login_manger/index.vue'),
     }
     // ,
     // {

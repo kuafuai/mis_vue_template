@@ -40,6 +40,9 @@ public class LoginBusinessService {
     @Value("${login.openid.column:wechat_login_id}")
     private String openid_table_column;
 
+    @Value("${login.relevance_column_name:relevance_table}")
+    private String relevance_column_name;
+
 
     public Object getCurrentUser() {
         IService iService = SpringUtils.getBean(login_table);
@@ -148,6 +151,7 @@ public class LoginBusinessService {
         IService iService = SpringUtils.getBean(table);
         QueryWrapper<?> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(key, value);
+        queryWrapper.isNull(relevance_column_name).or().eq(relevance_column_name,"");
         return iService.getOne(queryWrapper);
     }
 

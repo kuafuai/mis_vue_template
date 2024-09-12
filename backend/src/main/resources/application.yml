@@ -10,7 +10,7 @@ mybatis:
 
 app:
   # 文件路径 示例（ Windows配置D:/kuafu/uploadPath，Linux配置 /home/kuafu/uploadPath）
-  profile: ${UPLOAD_PATH:./uploadPath}
+  profile: ${UPLOAD_PATH:../../uploadPath}
 
 knife4j:
   enable: true
@@ -46,15 +46,15 @@ mybatis-plus:
 
 
 login:
-  enable: ${LOGIN_ENABLE:false}
-  table: UserInfo
+  enable: ${LOGIN_ENABLE:true}
+  table: Login
   select:
-    table: UserInfo
+    table: Login
     column: phone_number
   openid:
-    table: UserInfo
+    table: Login
     column: wechat_login_id
-
+  relevance_column_name: relevance_table
 python:
   env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}
 

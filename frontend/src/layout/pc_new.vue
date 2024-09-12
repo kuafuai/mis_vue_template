@@ -28,6 +28,12 @@
                     </el-menu-item>    
                 </div>
 
+                <div>
+                    <el-menu-item index="/login_manger">
+                        <template #title>登录管理</template>
+                    </el-menu-item>
+                </div>
+
             </el-menu>
 
         </div>
