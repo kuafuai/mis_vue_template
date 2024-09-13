@@ -8,6 +8,7 @@ import com.kuafu.common.exception.file.InvalidExtensionException;
 import com.kuafu.common.util.DateUtils;
 import com.kuafu.common.util.Seq;
 import com.kuafu.common.util.StringUtils;
+import com.kuafu.common.util.UUID;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -104,8 +105,10 @@ public class FileUploadUtils {
      * 编码文件名
      */
     public static String extractFilename(MultipartFile file) {
+//        return StringUtils.format("{}/{}_{}.{}", DateUtils.datePath(),
+//                FilenameUtils.getBaseName(file.getOriginalFilename()), Seq.getId(Seq.uploadSeqType), getExtension(file));
         return StringUtils.format("{}/{}_{}.{}", DateUtils.datePath(),
-                FilenameUtils.getBaseName(file.getOriginalFilename()), Seq.getId(Seq.uploadSeqType), getExtension(file));
+                FilenameUtils.getBaseName(UUID.randomUUID().toString().replace("-", "")), Seq.getId(Seq.uploadSeqType), getExtension(file));
     }
 
     public static File getAbsoluteFile(String uploadDir, String fileName) throws IOException {

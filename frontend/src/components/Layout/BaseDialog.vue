@@ -1,5 +1,5 @@
 <template>
-    <el-dialog :close-on-click-modal="false" v-bind="$attrs">
+    <el-dialog :close-on-click-modal="false" v-bind="$attrs" @close="closeDialog">
       <slot />
   
       <template #footer>
@@ -8,6 +8,12 @@
     </el-dialog>
 </template>
 
-<script setup></script>
+<script setup>
+  var emits=defineEmits(["close"])
+  const closeDialog=()=>{
+    emits("close")
+  }
+
+</script>
 <style lang="scss" scoped></style>
   

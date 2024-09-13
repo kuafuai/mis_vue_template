@@ -80,6 +80,11 @@ public class CommonController {
 
     public String getUrl() {
         HttpServletRequest request = ServletUtils.getRequest();
+        final String backendUrl = request.getHeader("BackendAddress");
+        if (StringUtils.isNotEmpty(backendUrl)) {
+            return backendUrl;
+//            return getDomain(request).replace(ServletUtils.getRequest().getContextPath(),"") + "/" + processBackedUrl(backendUrl);
+        }
         return getDomain(request);
     }
 

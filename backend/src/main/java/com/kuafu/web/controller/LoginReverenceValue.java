@@ -5,16 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 @Getter
 public enum LoginReverenceValue {
-    leadStatus("leadStatus", "visit_management_all.get_lead_status_list"),
-    customerStage("customerStage", "business_opportunity_all.get_customer_stage_list"),
-    visitManagement("visitManagement", "business_opportunity_all.get_visit_management_list"),
-    customerHierarchy("customerHierarchy", "customer_all.get_customer_hierarchy_list"),
-    personnelScale("personnelScale", "customer_all.get_personnel_scale_list"),
-    industry("industry", "customer_all.get_industry_list"),
-    salesman("salesman", "business_opportunity_all.get_salesman_list"),
-    opportunityStatus("opportunityStatus", "business_opportunity_all.get_opportunity_status_list"),
-    customer("customer", "business_opportunity_all.get_customer_list"),
-    ;
+    None("none", "none");
     private String label;
     private String value;
 

@@ -5,13 +5,13 @@
             <base-layout display="flex" class="m-l-20">
                 <el-button round @click="eventAdd"><el-icon class="m-r-6"><CirclePlus /></el-icon> 添加</el-button>
 
-                <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>
+<!--                <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>-->
 
-                <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>
+<!--                <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>-->
                 
             </base-layout>
             <base-layout display="flex" class="m-r-20">
-                <el-input v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  placeholder="请输入要搜索的内容" >
+              <el-input v-if="firstSearchData" v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  :placeholder="'请输入'+firstSearchComment" >
                     <template #suffix>
                         <el-icon @click="onSearch"><Search /></el-icon>
                     </template>
@@ -47,7 +47,7 @@
 
     <base-layout v-else display="flex" direction="c" :w_full="true">
         <base-layout display="flex" x="end" :w_full="true" class="p-x-20">
-            <el-input v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  placeholder="请输入要搜索的内容" >
+            <el-input v-if="firstSearchData" v-model="props.searchData[firstSearchData]" @keyup.native.enter="onSearch"  :placeholder="'请输入'+firstSearchComment" >
                 <template #suffix>
                     <el-icon @click="onSearch"><Search /></el-icon>
                 </template>
@@ -60,9 +60,9 @@
         <base-layout class="m-t-20 m-l-20" display="flex">
             <el-button round @click="eventAdd"><el-icon class="m-r-6"><CirclePlus /></el-icon> 添加</el-button>
 
-            <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>
+<!--            <el-button round><el-icon class="m-r-6"><Operation /></el-icon> 筛选</el-button>-->
 
-            <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>
+<!--            <el-button round><el-icon class="m-r-6"><Notebook /></el-icon> 导出Excel</el-button>-->
                 
         </base-layout>
 
@@ -95,7 +95,8 @@ const type = import.meta.env.VITE_APP_TYPE;
 const props = defineProps({
   searchItems: { type: Array, default: () => [] },
   searchData: { type: Object, default: () => {} },
-  firstSearchData: { type: String}
+  firstSearchData: { type: String},
+  firstSearchComment: { type: String,default:"要搜索的内容"}
 });
 
 const advanced = ref(false);
