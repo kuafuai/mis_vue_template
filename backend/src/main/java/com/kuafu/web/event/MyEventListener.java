@@ -23,8 +23,6 @@ import java.util.stream.Collectors;
 public class MyEventListener {
 
 
-
-
     private final Map<String, List<LoginTableVo>> loginMap = EventConstant.loginTableVoList.stream()
             .collect(Collectors.groupingBy(LoginTableVo::getName));
 
@@ -70,7 +68,10 @@ public class MyEventListener {
 
             updateWrapper.eq(Login::getRelevanceTable, tableName)
                     .eq(Login::getRelevanceId, login.getRelevanceId());
-            loginService.update(updateWrapper);
+            final boolean update = loginService.update(updateWrapper);
+            if (!update) {
+                loginService.save(login);
+            }
         } else if (StringUtils.equalsIgnoreCase(model, "delete")) {
             final LambdaQueryWrapper<Login> wrapper = new LambdaQueryWrapper<>();
             wrapper.eq(Login::getRelevanceTable, tableName)
@@ -108,7 +109,7 @@ public class MyEventListener {
      * @return
      */
     private String getValueByFiledName(Object data, String userNameKey) {
-        if (StringUtils.isEmpty(userNameKey)){
+        if (StringUtils.isEmpty(userNameKey)) {
             return null;
         }
         final Class<?> aClass = data.getClass();

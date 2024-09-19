@@ -138,7 +138,7 @@
                        @change="relevance_change"></base-select>
         </el-form-item>
 
-        <el-form-item  v-show="haveParam" label="绑定业务ID" prop="relevanceId" v-if="is_show_select">
+        <el-form-item v-show="haveParam" label="绑定业务ID" prop="relevanceId" v-if="is_show_select">
           <!-- <el-input placeholder="请输入绑定业务ID" v-model="form.relevanceId" /> -->
           <base-select v-model="form.relevanceId" placeholder="请输选择" :api="relevance_value_api"></base-select>
         </el-form-item>
@@ -175,7 +175,7 @@
           label-position='top'
           label-width='100px'
       >
-        <el-form-item  label="新密码" prop="password">
+        <el-form-item label="新密码" prop="password">
           <el-input placeholder="请输入密码" v-model="update_password_form.password"/>
         </el-form-item>
 
@@ -327,6 +327,10 @@ const showDialog = (login_id) => {
 
 }
 
+const refreshTableUpdateData = () => {
+  update_password_form.value={}
+  update_password_dialog.value = false;
+}
 /**
  * 更新
  * @returns {Promise<void>}
@@ -337,7 +341,7 @@ const update_password_function = async () => {
       console.log(update_password_form.value)
       let res = await proxy.$api.login_manger.update_password(update_password_form.value);
       proxy.$modal.msgSuccess(res.message);
-      refreshTableData();
+      refreshTableUpdateData();
       update_password_dialog.value = false;
     }
   });
