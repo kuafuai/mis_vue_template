@@ -81,7 +81,6 @@ public class MyEventListener {
     }
 
     private Login getLoginVo(Object data, LoginTableVo loginTableVo) {
-
         final String passwordKey = loginTableVo.getPasswordKey();
         final String primaryKey = loginTableVo.getPrimaryKey();
         final String userNameKey = loginTableVo.getUserNameKey();
@@ -109,6 +108,9 @@ public class MyEventListener {
      * @return
      */
     private String getValueByFiledName(Object data, String userNameKey) {
+        if (StringUtils.isEmpty(userNameKey)){
+            return null;
+        }
         final Class<?> aClass = data.getClass();
         try {
             final Field field = aClass.getDeclaredField(userNameKey);

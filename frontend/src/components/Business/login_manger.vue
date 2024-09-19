@@ -133,12 +133,12 @@
         <!--          <el-input placeholder="请输入身份证号" v-model="form.password" />-->
         <!--      </el-form-item>-->
 
-        <el-form-item label="绑定业务" prop="relevanceTable">
+        <el-form-item v-show="haveParam" label="绑定业务" prop="relevanceTable">
           <base-select v-model="form.relevanceTable" placeholder="请输选择" api="login_manger.relevance_all"
                        @change="relevance_change"></base-select>
         </el-form-item>
 
-        <el-form-item label="绑定业务ID" prop="relevanceId" v-if="is_show_select">
+        <el-form-item  v-show="haveParam" label="绑定业务ID" prop="relevanceId" v-if="is_show_select">
           <!-- <el-input placeholder="请输入绑定业务ID" v-model="form.relevanceId" /> -->
           <base-select v-model="form.relevanceId" placeholder="请输选择" :api="relevance_value_api"></base-select>
         </el-form-item>
@@ -175,7 +175,7 @@
           label-position='top'
           label-width='100px'
       >
-        <el-form-item label="新密码" prop="password">
+        <el-form-item  label="新密码" prop="password">
           <el-input placeholder="请输入密码" v-model="update_password_form.password"/>
         </el-form-item>
 
@@ -226,8 +226,14 @@ let password_rules = ref({
 if (isParamsEmpty.value) {
   let routerQuery = proxy.$route.query;
   Object.assign(listQuery.value, routerQuery);
+  Object.assign(form.value, routerQuery);
 } else {
   Object.assign(listQuery.value, props.params);
+  Object.assign(form.value, props.params);
+}
+const haveParam = ref(true)
+if (form.value.relevanceId && form.value.relevanceTable) {
+  haveParam.value = false
 }
 
 
@@ -242,16 +248,20 @@ function handleDetail(row) {
 }
 
 function handleAdd() {
+  let routerQuery = proxy.$route.query;
   form.value = {...props.params};
+  Object.assign(form.value, routerQuery);
   dialogStatus.value = 'add';
   dialogVisible.value = true;
 }
+
 const relevance_value_api = ref('');
 const is_show_select = ref(false)
-const closeDialog=()=>{
+const closeDialog = () => {
   dialogVisible.value = false
-  is_show_select.value=false
+  is_show_select.value = false
 }
+
 async function relevance_change(value) {
   console.log("zhixing", value)
   let res = await proxy.$api.login_manger.relevance_get_value({relevance: value})
@@ -270,7 +280,7 @@ function handleUpdate(row) {
   // if (dialogStatus.value == "update") {
   // console.log("update", value)
   //  请求数据
-  if (form.value.relevanceTable!=null && form.value.relevanceTable!=''){
+  if (form.value.relevanceTable != null && form.value.relevanceTable != '') {
     is_show_select.value = false
     relevance_change(form.value.relevanceTable)
   }
@@ -283,7 +293,6 @@ async function handleDelete(row) {
   refreshTableData();
   proxy.$modal.msgSuccess(res.message);
 }
-
 
 
 function submitForm() {

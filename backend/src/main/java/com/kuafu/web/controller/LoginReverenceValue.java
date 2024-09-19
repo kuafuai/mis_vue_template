@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 @Getter
 public enum LoginReverenceValue {
-    None("none", "none");
+userInfo("userInfo","bug_info_all.get_user_info_list"),bug_info("bug_info","bug_info.get_select_list"),user_info("user_info","user_info.get_select_list"),bug_priority("bug_priority","bug_priority.get_select_list"),bug_status("bug_status","bug_status.get_select_list"),;
     private String label;
     private String value;
 
