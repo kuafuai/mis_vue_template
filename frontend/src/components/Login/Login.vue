@@ -110,6 +110,7 @@
 .login {
   width: 440px;
   height: 464px;
+  padding-top: 15px;
   background: #ffffff;
   border-radius: 6px;
   h2 {
