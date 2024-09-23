@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Getter
 public enum LoginReverence {
 
-    None("none", "none");
+userInfo("用户信息","userInfo"),;
     private String label;
     private String value;
 
