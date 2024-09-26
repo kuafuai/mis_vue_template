@@ -55,7 +55,7 @@
     const rules = reactive({
         phone: [
             { required: true, message: "请输入用户名", trigger: "blur" },
-            { min: 1, max: 10, message: "用户名长度1-15位", trigger: "blur" },
+            // { min: 1, max: 15, message: "用户名长度1-15位", trigger: "blur" },
         ],
         password: [
             {
@@ -63,7 +63,7 @@
             message: "请输入密码",
             trigger: "blur",
             },
-            { min: 6, max: 18, message: "密码长度", trigger: "blur" },
+            // { min: 6, max: 18, message: "密码长度", trigger: "blur" },
         ],
     });
 
