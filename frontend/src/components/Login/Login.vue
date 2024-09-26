@@ -55,7 +55,7 @@
     const rules = reactive({
         phone: [
             { required: true, message: "请输入用户名", trigger: "blur" },
-            { min: 1, max: 10, message: "用户名长度1-15位", trigger: "blur" },
+            // { min: 1, max: 15, message: "用户名长度1-15位", trigger: "blur" },
         ],
         password: [
             {
@@ -63,7 +63,7 @@
             message: "请输入密码",
             trigger: "blur",
             },
-            { min: 6, max: 18, message: "密码长度", trigger: "blur" },
+            // { min: 6, max: 18, message: "密码长度", trigger: "blur" },
         ],
     });
 
@@ -110,19 +110,17 @@
 .login {
   width: 440px;
   height: 464px;
-  padding-top: 15px;
+  padding-top: 60px;
   background: #ffffff;
   border-radius: 6px;
+  text-align: center;
   h2 {
-    text-align: center;
-  }
-  h5 {
     text-align: center;
   }
   .el-form {
     margin: 0 auto;
-    margin-top: 72px;
-    height: 264px;
+    margin-top: 45px;
+    height: 230px;
     .el-form-item,
     .el-input__wrapper,
     .el-input {
